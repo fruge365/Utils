@@ -1,0 +1,81 @@
+// 通配符
+* {
+    margin: 0;
+    padding: 0;
+}
+
+// 测试
+// div.box {
+//     width: 1rem;
+//     height: 1rem;
+//     background-color: red;
+// }
+html,body{
+    width: 100%;
+    height: 100%;
+}
+// body
+body {
+    display: flex;
+    flex-direction: column;
+    //文件路径基于scss路径
+    background: #000d4a url(../imgs/bg.jpg) center top;
+}
+
+// header
+header {
+    width: 100%;
+    // 复制
+    height: 105px;
+    background: url(../imgs/head_bg.png) no-repeat center center;
+    position: relative;
+    text-align: center;
+    color: #fff;
+
+    h1 {
+        // 给父元素加
+        // color: #fff;
+        // text-align: center;
+        font-size: .42rem;
+        line-height: 90px;
+    }
+
+    span {
+        // 给父元素加
+        // color: #fff;
+        position: absolute;
+        right: .2rem;
+        top: .35rem;
+        font-size: .3rem;
+    }
+}
+
+// main
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    margin: .2rem;
+    // background-color: red;
+    .colunm{
+        width: 30%;
+        height: 100%;
+        // background-color: green;
+        
+        // 相当于 .column：nth-of-type(2)
+        &:nth-of-type(2){
+            width: 40%;
+            height: 100%;
+            margin: 0 .2rem;
+            // background-color: blue;
+        }
+
+        //box
+        .box{
+            width: 100%;
+            background: rgba(0,0,0,.2,);
+            // background-color: yellow;
+            margin-bottom: .15rem;
+        }
+    }
+}

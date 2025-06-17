@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+<script src="./仿写Json内置对象.js"></script>
+<style>
+    input{
+        height: 30px;
+        width: 300px;
+    }
+    button{
+        height: 40px;
+    }
+    div{
+        height: 40px;
+        font-size: 30px;
+        font-weight:bold;
+        font-family: '楷体'
+    }
+</style>
+<div>F12 控制台查看结果</div>
+输入框：<input type="text" class="ipt"><br><br>
+<button>这个按钮没问题>>></button>
+<button class="btn1">Json数据格式转普通对象</button>
+<button class="btn2">普通对象转Json数据格式</button>
+<button class=""><<<这个按钮有问题</button>
+
+<script>
+    document.querySelector('.btn1').onclick = function ()
+    {
+        console.log(Jsontrans(document.querySelector('.ipt').value));
+    }
+    
+    //btn2废弃部分(从网页获取的是字符串，暂时想不到怎么解决)
+    // document.querySelector('.btn2').onclick = function ()
+    // {
+    //     let temp = document.querySelector('.ipt').value
+    //     let temp1 = Json(temp)
+    //     console.log(temp1);
+    // }
+    
+    //普通对象转Json数据格式
+    // console.log('{name:'zhangwu',age:22}转换Json为'+Json({name:'zhangwu',age:22}));
+    let temp = Json({name:'zhangwu',age:22})
+    console.log(`{name:'zhangwu',age:22}转换Json数据类型为${temp}`);
+</script>

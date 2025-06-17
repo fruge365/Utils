@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方案1ul+三角</title>
+    <style>
+        ul{
+            background-color: red;
+        }
+        ul li{
+            background-color: pink;
+            margin: 10px 0; 
+        }
+        div{
+            visibility: hidden;
+            width: 100px;
+            height: 30px;
+            background-color: #555;
+            text-align: center;
+            border-radius: 5px;
+            line-height: 30px;
+            position: absolute;
+            pointer-events: none;
+        }
+        div::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>0001</li>
+        <li>0002</li>
+        <li>0003</li>
+        <li>0004</li>
+        <li>0005</li>
+    </ul>
+    <div>提示框</div>
+</body>
+</html>
+<script>
+    var ulObj = document.querySelector('ul')
+    ulObj.onmousemove = function(evt){
+        var e = evt || window.event
+        var target = e.target || e.srcElement
+        var divObj = document.querySelector('div')
+        var w = divObj.clientWidth
+        var h = divObj.clientHeight
+        if(target.nodeName === 'LI'){
+            divObj.style.visibility = 'visible'
+            divObj.innerText = target.innerText
+            divObj.style.left = e.clientX-w/2+'px'
+            divObj.style.top = e.clientY-h-5+'px'
+        }else{
+            divObj.style.visibility = 'hidden'
+        }
+        
+    }
+    ulObj.onmouseout = function(){
+        var divObj = document.querySelector('div')
+        divObj.style.visibility = 'hidden'
+    }
+</script>

@@ -1,0 +1,126 @@
+@import 'common'; 
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+}
+ 
+body {  
+  width: 980px; 
+  margin: 40px auto 80px;
+  
+  p {margin: 16px 0 !important;}
+
+  // header
+  header {
+    img {
+      width: 130px;
+      height: 47px;
+      transition: all .15s ease-out;
+      -webkit-transition: all .15s ease-out;
+      -moz-transition: all .15s ease-out;
+    }
+
+    img:hover {
+      transform: scale(1.07) rotate(-1deg);
+      -webkit-transform: scale(1.07) rotate(-1deg);
+      -moz-transform: scale(1.07) rotate(-1deg);
+    }
+  }
+
+  // section
+  section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    overflow: hidden;
+
+    form {  
+      width: 370px;
+      .saoma-login {display: none;} 
+      .sms-login { display: none;position: relative;}
+      .sms-login a {position: absolute; top:115px;right:110px; font-size:12px;color: #666 !important;}
+      p {
+        span {
+          cursor: pointer;
+          &.active {
+            cursor: default;
+            border-bottom: solid 2px black;
+            padding-bottom: 5px;
+          }
+        }
+
+        a {color:#ebb563;text-decoration:none;}
+      } 
+      input[type="text"],input[type="password"] { 
+        width: 270px;
+        height: 35px;
+        border: 1px solid #aaa; 
+        margin: 10px 0;
+        font-size: 18px;
+        padding-left: 5px;
+      }
+      button {
+        width: 270px; 
+        height: 34px; 
+        margin: 7px 0px !important;
+      }
+    }
+  }
+
+  // footer
+  .footer {
+      margin: 40px auto 30px;
+      clear: both;
+      width: 980px;
+      font-size: 10px;
+      color: #999
+  }
+
+  .footer .site-info-nav {
+      margin-bottom: 20px;
+      padding: 12px 0;
+      border-top: 1px solid #EEE;
+      border-bottom: 1px solid #EEE;
+      overflow: hidden;
+  }
+
+  .footer .site-info-nav ul {
+      float: left;
+      width: 594px;
+      color: #EEE;
+      padding: 0px;
+  }
+
+  .footer .copyright a,.footer .site-info-nav li a {
+      color: #999
+  }
+
+  .footer .site-info-nav li {
+      float: left;
+      margin: 5px 0;
+      padding: 0 16px;
+      line-height: 14px;
+      border-right: 1px solid #EEE
+  }
+
+  .footer .site-info-nav .first {
+      padding-left: 0
+  }
+
+  .footer .site-info-nav .last {
+      border-right: none
+  }
+
+  .footer .site-info-nav__commitment img {
+      vertical-align: top
+  }
+
+  .footer .copyright {
+      text-align: left;
+      clear: both;
+      font-size: 12px;
+      font-family: initial
+  }
+}

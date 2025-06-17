@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="./demo.css">
+<meta charset="utf-8">
+<div class="box swiper1">
+    <img src="./imgs/img1.jpg" alt="">
+    <ul>
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script>
+let num = 1     //将num定义为全局变量(后续要用)
+let t           //将计时器定义为全局变量
+function StartLbt (){
+    // 每个1s切换图片
+    t = setInterval(()=>{                     //定义计时器为全局变量(后续要用)
+        num++
+        if(num > 6) num = 1
+        document.querySelector('img').src = `./imgs/img${num}.jpg`      //模板字符串修改img地址
+        document.querySelector('.box ul li.active').className = ''
+        document.querySelectorAll('.box ul li')[num-1].className = 'active'
+    },1000)
+}
+
+StartLbt()      //浏览器打开调用函数即轮播图片
+    
+let ulliObjs = document.querySelectorAll('.box ul li')  //获取所有的li形成伪数组
+ulliObjs.forEach((item,i) => {                          //遍历伪数组，item即每个li标签
+    //鼠标移入分页器(li)对应图片切换
+    item.onmouseover = function(){
+        clearInterval(t)                                //停止间隔计时器即停止1s图片轮播
+        document.querySelector('.box ul li.active').className = ''
+        ulliObjs[i].className = 'active'
+        document.querySelector('img').src = `./imgs/img${i+1}.jpg`
+        num = i+1                                       //从下一个图片开始轮播
+    }
+    //鼠标离开分页器继续轮播图
+    item.onmouseout = function(){
+        StartLbt()          //调用轮播函数，图片开始1s轮播
+    }
+})
+</script>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>王思聪吃热狗🌭</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            overflow: hidden;
+            background: url(./img/bj.webp);
+            background-size: cover;
+        }
+        img{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            display: block;
+        }
+        .game-score>h1{
+            font-size: 30px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <img src="./img/wsc.png" alt="" class="wsc">
+    <div class="play-panel">
+        <div class="start"><span class="btn">❥开始游戏</span></div>
+        <div class="stop">
+            <div class="title">游戏结束</div>
+            <div class="score">60分</div>
+            <div class="btn">※重新开始※</div>
+        </div>
+    </div>
+    <div class="game-score">
+        <h1>剩余时间<span>60</span>秒</h1>
+        <h1>0分</h1>
+    </div>
+</body>
+</html>
+
+<script>
+    let wscObj =  document.querySelector('.wsc')
+    let score = 0
+    let wscX = 0
+    let wscY = (window.innerHeight||document.documentElement.clientHeight) - wscObj.offsetHeight
+
+    function random(min ,max){
+        return Math.floor(Math.random()*(max-min+1)+min)
+    }
+
+    //安排王思聪图标
+    //绑定鼠标移动事件
+    document.onmousemove = function(evt){
+        //获取事件对象
+        var e = evt || window.event
+        //获取wsc图片
+        var wscObj = document.querySelector('img.wsc')
+        //限定wsc  left最小为0，最大为网页宽度-王思聪宽度
+        var left = e.clientX -wscObj.offsetWidth/2
+        var maxLeft = (window.innerWidth || document.documentElement.clientWidth) - wscObj.offsetWidth
+        if(left<0) left = 0
+        if(left>maxLeft) left = maxLeft
+        wscObj.style.left = left + 'px'
+
+        //重置wsc坐标
+        wscX = left
+    }
+
+    //随机食物X轴
+    function startFoodPlay(){
+        // 间隔计时器，每隔0.5s生成一个食物
+        return setInterval(() => {
+            // 造一个img
+            var imgObj  = document.createElement('img')
+            //食物出现概率
+            var who = random(0,9)
+            //68出现冠军奖杯，other热狗🌭
+            if([6,8].includes(who)){
+                imgObj.className = 'food guanjun'
+                imgObj.src = './img/guanjun.png'
+                imgObj.setAttribute('type','guanjun')
+                //设置imgObj    type属性值为guanjun
+            }else{
+                imgObj.className = 'food hotdog'
+                imgObj.src = './img/hotdog.png'
+                imgObj.setAttribute('type','hotdog')
+            }
+
+            //把食物追加到页面
+            var min = 0
+            var max = (window.innerWidth || document.documentElement.clientWidth) - imgObj.offsetWidth
+            imgObj.style.left = random(min,max) + 'px'
+            imgObj.style.top = '0px'
+            document.body.appendChild(imgObj)
+        }, 1000);
+    }
+    // startFoodPlay()
+    var foodT = startFoodPlay()
+
+    //食物掉落y轴,y轴位置变化
+    setInterval(() => {
+        // 获取所有生成的食物
+        var foods = document.querySelectorAll('.food')
+        //遍历食物伪数组
+        foods.forEach((item,index) => {
+            var top = parseInt(item.style.top) + 2
+            var maxtop = (window.innerHeight || document.documentElement.clientHeight)  - item.offsetHeight
+            if(top >= maxtop){
+                //超出网页移除该食物
+                document.body.removeChild(item)
+            }else{
+                item.style.top = top + 'px'
+            }
+
+            //判断食物是否在wsc范围内
+            //公式一：食物x  >  王公子x   &&  食物x  <  王公子X + 自身宽度
+            //公式二：食物y + 自身高度  >  王公子y
+            //符合[公式一&&公式二]则图片消失
+            var foodX = parseInt(item.style.left)
+            var foodY = parseInt(item.style.top) + item.offsetHeight
+            if( 
+                (foodX>wscX && foodX <= (wscX+wscObj.offsetWidth))
+            &&
+                foodY > wscY
+            ){
+                //获取自定义属性
+                var type = item.getAttribute('type')
+                type == 'guanjun'?score += 5 : score++
+                console.log(`食物坐标【${foodX},${foodY}】，王公子坐标【${wscX+wscObj.offsetWidth},${wscY+wscObj.offsetHeight}】，+1，总分【${score}}】`);
+                document.querySelector('.game-score h1:nth-of-type(2)').innerText = `${score}分`
+                document.querySelector('.game-score h1:nth-of-type(2)').style.fontSize = '30px'
+                document.body.removeChild(item)
+
+                //提示得分增加
+                var divObj = document.createElement('div')
+                divObj.className = 'show-score'
+                divObj.innerText = type == 'guanjun'?'+5':'+1'
+                divObj.style.left = wscX + wscObj.offsetWidth + 'px'
+
+                document.body.appendChild(divObj)
+                setTimeout(() => document.body.removeChild(divObj),1000)
+            }
+
+        })
+    });
+
+
+      // ### 结束游戏
+  // 1 打开页面，执行定时器代码 1s
+  // 2 定时器处理函数中 
+  //   2.1 time--
+  //   2.2 判断
+  //   time>=0 同步到页面
+  //   else   1-清除游戏倒计时、2-清除随机食物、3-重置游戏60s、4-展示重新开始面板
+    let time = 60
+    function startTimePlay() 
+    {
+    return setInterval(() => {
+    time--
+    let gameScoreObj = document.querySelector('.game-score span')
+    if (time>=0) {
+        gameScoreObj.innerText = time
+    }else {
+        
+        clearInterval(gameT) // 1-清除游戏倒计时
+        clearInterval(foodT) // 2-清除随机食物
+        time = 60            // 3-重置游戏60s
+        // 4-展示重新开始面板
+        let payPanel = document.querySelector('.play-panel')
+        let payPanelStop = payPanel.querySelector('.stop')
+        payPanel.querySelector('.score').innerText = score+'分'
+        payPanel.querySelector('.score').style.color = 'red'
+        payPanel.style.display =  payPanelStop.style.display = 'block'
+    }
+    }, 1000)
+    }
+    let gameT = startTimePlay() 
+
+
+  // ### 重新开始游戏
+    let startBtn = document.querySelector('.play-panel .stop .btn')
+    startBtn.onclick = function() {
+    // 清空分数
+    score = 0             
+    document.querySelector('.game-score h1:nth-of-type(2)').innerText = `${score}分`
+    // document.querySelector('.game-score h1:nth-of-type(2)').style.color = red
+    // 开始游戏
+    foodT = startFoodPlay() 
+    gameT = startTimePlay()
+    // 开启面板
+    let payPanel = document.querySelector('.play-panel')
+    let payPanelStop = payPanel.querySelector('.stop')
+    payPanel.style.display =  payPanelStop.style.display = 'none'
+    }
+</script>

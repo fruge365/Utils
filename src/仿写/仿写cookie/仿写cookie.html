@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<script src="./cookie.js" charset="utf-8"></script>
+<style>
+    div{
+        height: 40px;
+        font-size: 30px;
+        font-weight: bold;
+        font-family: '楷体';
+    }
+</style>
+<div>F12 Sources查看JS</div>
+
+<script>
+    setCookie('uname','admin8',20)
+    setCookie('uname1','admin88',20)
+    setCookie('uname2','admin888',20)
+    // getCookie()
+    // console.log(document.cookie('神龙教主'));
+    console.log(document.cookie);
+    console.log(getCookie('uname'));
+    removeCookie('uname')
+    console.log(getCookie('uname'));
+</script>

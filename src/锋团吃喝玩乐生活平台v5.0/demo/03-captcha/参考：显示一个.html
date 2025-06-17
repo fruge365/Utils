@@ -1,0 +1,33 @@
+<meta charset="UTF-8" />
+<style>
+  body {
+    width: 50%;
+    margin: auto;
+    margin-top: 200px;
+  }
+</style>
+
+<!-- 显示行为验证码的容器 -->
+<div id="captcha" style="height: 50px"></div>
+<!-- 显示行为验证码的容器 -->
+
+<hr />
+<button id="btn">登录</button>
+
+<script src="../../assets/js/_jquery.js"></script>
+<script src="./common-captcha-gt4.js"></script>
+<script>
+  // 显示行为验证码（注：返回的是promise对象）
+  const captcha = captchaBigData("#captcha");
+
+  // 你的逻辑
+  $("#btn").click(async function () {
+    // 检查行为验证码是否验证成功
+    if (!(await captcha).getValidate()) {
+      return alert("【行为验证码】请完成验证码，验证！！！");
+    }
+    // 你的业务逻辑
+    alert("写出你的代码");
+    // 你的业务逻辑
+  });
+</script>

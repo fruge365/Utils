@@ -1,0 +1,111 @@
+<meta charset="utf-8">
+<title>宝，登录吗？</title>
+<form action="">
+    用户名：<input type="text" id="uname">
+    <hr>
+    密&emsp;码：<input type="password" id="pwd">
+    <hr>
+    验证码：<input type="text" id="captcha"><img src="http://kg.zhaodashen.cn/v1/public/captcha.jsp" class="captcha">
+    <hr>
+    <!-- 勾选了为true，没勾选为false -->
+    <input type="checkbox" id="checkbox">七天免登录
+    <hr>
+    <input type="submit" value="登录" class="submit">
+    <input type="reset" value="重置">
+</form>
+
+
+
+
+
+<script src="./ajax.js"></script>
+<script>
+
+    document.querySelector('.submit').onclick = async function (evt) {
+
+        //阻止浏览器默认提交
+        let e = evt || window.event
+        e.preventDefault()
+
+        //获取一些值
+        let uname = document.querySelector('#uname').value
+        let pwd = document.querySelector('#pwd').value
+        let captcha = document.querySelector('#captcha').value
+        let res = await post(
+            'http://kg.zhaodashen.cn/v1/public/login.jsp',
+            {
+                uname,
+                pwd,
+                captcha
+            },
+            'json',
+            {
+                'token': 'adf7cbdcdc62b07d94f86339e5687ca51'
+            }
+        )
+
+        //通过判断状态码判断是否跳转
+        if (res.meta.state === 200) {
+            // ----------------------------------模块内注释之后为永久登录(H5存储记得拿出来)----------------------------------
+            //判断是否勾选七天免登录，勾选了为true，没勾选为false
+            if (document.querySelector('#checkbox').checked) {
+                console.log('拿到数据了：', res);
+                localStorage.setItem('uname', res.data.uname)
+                //7天
+                // localStorage.setItem('expires',new Data().getTime()+7*24*60*60*1000)
+                //20秒
+                localStorage.setItem('expires',(new Date).getTime()+20*1000)
+            }else{
+                //没勾选窗口关闭就不行了
+                sessionStorage.setItem('uname',res.data.uname)
+            }
+            location.href = "./index.html"
+            // ----------------------------------模块内注释之后为永久登录(H5存储记得拿出来)----------------------------------
+
+        } else {
+            alert(res.meta.state, res.meta.msg);
+        }
+
+    }
+
+
+    //切换验证码
+    document.querySelector('.captcha').onclick = function () {
+        // new Date().getTime()         加上时间使每次产生的验证码不同
+        // document.querySelector('.captcha').src = 'http://kg.zhaodashen.cn/v1/public/captcha.jsp?time='+new Date().getTime();
+        this.src = 'http://kg.zhaodashen.cn/v1/public/captcha.jsp?time=' + new Date().getTime();
+    }
+</script>
+
+
+<script>
+    console.log('用户名：神龙教主');
+    console.log('密码：admin888');
+</script>
+
+<script>
+    console.log([
+
+        "                   _ooOoo_",
+        "                  o8888888o",
+        "                  88\" . \"88",
+        "                  (| -_- |)",
+        "                  O\\  =  /O",
+        "               ____/`---'\\____",
+        "             .'  \\\\|     |//  `.",
+        "            /  \\\\|||  :  |||//  \\",
+        "           /  _||||| -:- |||||-  \\",
+        "           |   | \\\\\\  -  /// |   |",
+        "           | \\_|  ''\\---/''  |   |",
+        "           \\  .-\\__  `-`  ___/-. /",
+        "         ___`. .'  /--.--\\  `. . __",
+        "      .\"\" '<  `.___\\_<|>_/___.'  >'\"\".",
+        "     | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |",
+        "     \\  \\ `-.   \\_ __\\ /__ _/   .-` /  /",
+        "======`-.____`-.___\\_____/___.-`____.-'======",
+        "                   `=---='",
+        "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "         大胆狂徒       还不现行",
+        "         佛祖保佑       永无BUG"
+    ].join('\n'));
+</script>

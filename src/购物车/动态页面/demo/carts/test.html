@@ -1,0 +1,47 @@
+
+<h1>参考2</h1>
+
+<a href="https://www.jq22.com/search?seo=%E9%A3%9E%E5%85%A5%E8%B4%AD%E7%89%A9%E8%BD%A6">
+    <h2>飞入购物车</h2>
+</a>
+ 
+<h1>参考1</h1>
+
+<style>
+.m-sidebar { position: fixed;  top: 0;  right: 0; background: #000; width: 35px;   height: 100%;  }
+.flyer { width: 50px; height: 50px;  border-radius: 50px;  position: fixed;  z-index: 2; }
+</style>
+    
+<div class="m-sidebar">
+    <div id="end" style="color: #fff; margin-top: 400px;">购物车</div>
+</div>
+
+<button style="margin-top:300px">加入购物车</button>
+    
+    
+<script src="http://unpkg.com/jquery"></script>
+<script src="./fly.js"></script> 
+    
+    
+<script>
+$('button').click(function(e){
+    let offset = $('#end').offset(), 
+    flyer = $('<img class="flyer" src="https://img10.360buyimg.com/n7/jfs/t1/186622/17/13425/226220/60f141d8E784af913/d8e1e33af953d4c1.jpg"/>');
+    flyer.fly({
+        start: {
+            left: e.pageX,
+            top: e.pageY
+        },
+        end: {
+            left: offset.left,
+            top: offset.top,
+            width: 20,
+            height: 20
+        },
+        onEnd: () => {
+            alert('ok')
+        } 
+    });
+})
+</script> 
+    

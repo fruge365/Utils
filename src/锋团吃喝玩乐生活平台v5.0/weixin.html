@@ -1,0 +1,37 @@
+<script src="http://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/jquery.qrcode@1.0.3/jquery.qrcode.min.js"></script>
+<script src="./assets/js/utils.js"></script>
+<div id="aaa"></div>
+<script>
+  $(function () {
+    let trade_no = getParams("trade_no");
+    let amount = getParams("amount");
+    console.log(trade_no, amount);
+    $.get(
+      `http://kg.zhaodashen.cn/mt/web/wxpay/native.jsp?out_trade_no=${trade_no}`,
+      {},
+      (res) => {
+        console.log(res);
+
+        jQuery("#aaa").qrcode({
+          render: "canvas", //也可以替换为table
+          foreground: "#000",
+          background: "#FFF",
+          text: res,
+        });
+      },
+      "text"
+    );
+    setInterval(() => {
+      $.post(
+        `http://kg.zhaodashen.cn/mt/web/wxpay/ispay.jsp?out_trade_no=${trade_no}`,
+        {},
+        (res) => {
+          console.log("支付状态：", res.meta);
+          console.log("支付状态：", res.data);
+        },
+        "json"
+      );
+    }, 1000);
+  });
+</script>

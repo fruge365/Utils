@@ -1,0 +1,130 @@
+<h1>HTML5 Geolocation（地理定位）</h1>
+
+<pre>
+手册：https://www.runoob.com/html/html5-geolocation.html
+问题：不稳定、误差大
+</pre>
+
+
+<h1>使用第三方地图提供的API</h1>
+
+<div class="rs"></div>
+<button>点击获取纬度,经度</button>
+
+<script src="http://unpkg.com/jquery"></script>
+<!-- 腾讯地图库 -->
+<script src="https://mapapi.qq.com/web/mapComponents/geoLocation/v/geolocation.min.js"></script>
+<script>
+$('button').click(function() {
+
+    // 思路：
+
+    // 1 封装location.js 
+    // 2 里面获取h5存储的  纬度、或经度
+    // 3 判断有-不管
+    // 4 没有-直接执行下述代码
+    //    代码指腾讯获取经度纬度的语法
+    //    4.1 纬度、或经度 直接h5存
+    //    4.2 城市请求接口【根据地区名返回编号】 因为后期要根据城市编号去查对应商品
+    //    有-存 city_name、city_id 
+    //    没有-就不存   不存其他地方会处理 你别管
+    // 5 公共头部引入该js文件即可
+
+    // 这样用户每次刷新或者打开新网页 只要没有定位到
+    // 因为h5没存储就可以重新获取
+
+
+    // ========================================
+
+    const geolocation = new qq.maps.Geolocation(
+        "J2VBZ-JD6CR-GWSWW-W52NP-WHEG5-VIFK3",
+        "waimai"
+    );
+
+    geolocation.getLocation(
+        res => {
+            console.log(res); // 纬度、经度、城市名等等等
+            let {lat, lng} = res
+            $('.rs').text(`${lat},${lng}`)
+            console.log(`${lat},${lng}`)
+
+            // 根据city请求接口获取城市编号
+        },
+        err => {
+            console.error(err);
+        }
+    );
+
+    // ========================================
+
+})
+</script>
+
+
+
+<h1>验证坐标位置</h1>
+
+<a href="https://lbs.qq.com/getPoint/" target="_blank">查看</a>
+
+
+<h1>腾讯地图计算两点之间距离</h1>
+<script>
+let rs = distance(32.066229,118.910007, 32.071859,118.905715)
+console.log(rs)
+
+let rs2 = distance(32.016137,118.755502, 32.028572,118.739577)
+console.log(rs2)
+
+/**
+ * 转换弧度
+ * @param d
+ * @returns {number}
+ */
+function getRad(d) {
+    var PI = Math.PI;
+    return (d * PI) / 180.0;
+}
+
+/**
+ * 根据经纬度计算两点间距离
+ * @param lng1
+ * @param lat1
+ * @param lng2
+ * @param lat2
+ * @returns {number|*}
+ * @constructor
+ */
+function distance(lng1, lat1, lng2, lat2) {
+    var f = getRad((lat1 + lat2) / 2);
+    var g = getRad((lat1 - lat2) / 2);
+    var l = getRad((lng1 - lng2) / 2);
+    var sg = Math.sin(g);
+    var sl = Math.sin(l);
+    var sf = Math.sin(f);
+    var s, c, w, r, d, h1, h2;
+    var a = 6378137.0; //The Radius of eath in meter.
+    var fl = 1 / 298.257;
+    sg = sg * sg;
+    sl = sl * sl;
+    sf = sf * sf;
+    s = sg * (1 - sl) + (1 - sf) * sl;
+    c = (1 - sg) * (1 - sl) + sf * sl;
+    w = Math.atan(Math.sqrt(s / c));
+    r = Math.sqrt(s * c) / w;
+    d = 2 * w * a;
+    h1 = (3 * r - 1) / 2 / c;
+    h2 = (3 * r + 1) / 2 / s;
+    s = d * (1 + fl * (h1 * sf * (1 - sg) - h2 * (1 - sf) * sg));
+    if (s >= 1000 && s <= 99000) {
+        var kilometer = s / 1000;
+        s = kilometer.toFixed(1) + "km";
+    } else if (s > 99000) {
+        s = ">99km"; 
+    } else {
+        s = Math.round(s) + "m";
+    }
+    // s = s/1000;
+    // s = s.toFixed(2);//指定小数点后的位数。
+    return s;
+}
+</script>

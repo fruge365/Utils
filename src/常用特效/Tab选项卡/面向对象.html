@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tab</title>
+<link rel="stylesheet" href="./demo.css">
+</head>
+<body>
+    <!-- Tab选项卡1 -->
+    <div class="box tab1">
+        <!-- 标题 -->
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <!-- 内容 -->
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </div>
+
+    <!-- Tab选项卡2 -->
+    <div class="box tab2">
+        <!-- 标题 -->
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <!-- 内容 -->
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </div>
+</body>
+
+<script type="module">      //module模块化
+    import Tab from './面向对象.js'     //是默认导出，导出多个有{}
+    const tab1 = new Tab('.tab1',{})    //'.tab1'最大盒子类名，{}自定义配置可写可不写
+    const tab2 = new Tab('.tab2',{})
+</script>

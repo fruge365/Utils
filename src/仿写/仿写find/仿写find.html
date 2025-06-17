@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<style>
+    div {
+        height: 40px;
+        font-size: 30px;
+        font-weight: bold;
+        font-family: '楷体';
+    }
+</style>
+<div>F12 控制台查看效果</div>
+
+<script>
+    console.log('<--底层find-->');
+    //底层forEach
+    let arr = ['亚索', '锐雯', '男枪', '提莫', '女枪']
+    let result = arr.find((item, i) => {
+        return item === '男枪'
+    })
+    console.log(result);
+
+    console.log('<--仿写find-->');
+    //仿写find
+    let arr1 = ['亚索', '锐雯', '男枪', '提莫', '女枪']
+    //原型中追加方法
+    Array.prototype.find2 = function (callback) {
+        // let callback = (item, i) => {return item === '男枪'}
+
+        //find特性,底层会遍历arr1
+        for (i = 0; i < this.length; i++) {
+            let temp = callback(this[i], i)
+            // console.log(temp);
+            if (temp) return this[i]
+
+        }
+    }
+    let result1 = arr1.find2((item, i) => {
+        //找不到方法去原型里面找
+        return item === '男枪'
+    })
+    console.log(result1);
+</script>

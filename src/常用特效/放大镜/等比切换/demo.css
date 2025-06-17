@@ -1,0 +1,8 @@
+
+.box {position: relative; margin: 30px;width: 450px;display: inline-block;}
+.img { width: 450px;height: 450px;border: 1px solid #333;position: relative;background: url(./imgs/1.jpg) no-repeat;}
+.img > .mask {width: 200px;height: 200px;background-color: yellow;opacity: .4;position: absolute;top: 0px;left: 0px;display: none;}
+ul {display: flex;list-style:none;margin-top:10px;}
+ul > li {width: 54px;height: 54px;border: 1px solid #333;margin-right: 10px;cursor: pointer;}
+ul > li.active {border-color: red;}
+.enlarge {width: 400px;height: 400px;position: absolute;top: 0;left: 101%;background: url(./imgs/1.big.jpg) no-repeat;background-size: 800px 800px;background-position: 0 0;display: none;}

@@ -1,0 +1,67 @@
+<meta charset="UTF-8" />
+<style>
+  body {
+    width: 50%;
+    margin: auto;
+    margin-top: 200px;
+  }
+</style>
+
+<h1>切换</h1>
+<button class="change">切换盒模型显示验证码</button>
+
+<h1>第一个</h1>
+<div class="box box1">
+  <!-- 显示行为验证码的容器 -->
+  <div class="captcha0" style="height: 50px"></div>
+  <!-- 显示行为验证码的容器 -->
+
+  <hr />
+  <button class="btn">登录</button>
+</div>
+
+<h1>第二个</h1>
+<div class="box box2">
+  <!-- 显示行为验证码的容器 -->
+  <div class="captcha1" style="height: 50px"></div>
+  <!-- 显示行为验证码的容器 -->
+
+  <hr />
+  <button class="btn">登录</button>
+</div>
+
+<script src="../../assets/js/_jquery.js"></script>
+<script src="./common-captcha-gt4.js"></script>
+<script>
+  // 显示行为验证码（默认第一个盒模型显示）
+  let captchaBoxIndex = 0;
+  let captcha = captchaBigData(".captcha0"); // 注：返回的是promise对象
+
+  // 切换行为验证码
+  $(".change").click(function () {
+    // 移除当前的
+    $(`.captcha${captchaBoxIndex}`).text("");
+    // 重新生成新的
+    captchaBoxIndex = Number(captchaBoxIndex === 0);
+    captcha = captchaBigData(`.captcha${captchaBoxIndex}`);
+  });
+
+  // 第一个盒子
+  $(".box1 .btn").click(async function () {
+    // 检查行为验证码是否验证成功
+    if (!(await captcha).getValidate())
+      return alert("【行为验证码】请完成验证码1，验证！！！");
+    // 你的业务逻辑
+    alert("写出你的代码1");
+    // 你的业务逻辑
+  });
+  // 第二个盒子
+  $(".box2 .btn").click(async function () {
+    // 检查行为验证码是否验证成功
+    if (!(await captcha).getValidate())
+      return alert("【行为验证码】请完成验证码2，验证！！！");
+    // 你的业务逻辑
+    alert("写出你的代码2");
+    // 你的业务逻辑
+  });
+</script>

@@ -1,0 +1,108 @@
+
+  .area {
+    position: relative;
+    display: inline-block;
+  } 
+
+  .area .change-city {
+    position: relative;
+    display: inline-block;
+    height: 23px;
+    line-height: 23px;
+    background: #fff;
+    border: 1px solid #CECBCE;
+    padding: 0 20px 0 4px;
+  }
+
+  .area .change-city b {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    width: 17px;
+    height: 24px;
+    background: url(https://www.17sucai.com/preview/73083/2014-02-24/area/img/btn20121210.png) 0 0 no-repeat
+  }
+
+  .area .box {
+    position: absolute;
+    z-index: 9;
+    border: 1px solid #cecbce;
+    width: 450px;
+    height: 250px;
+    padding: 15px;
+    background: #fff;
+    -moz-box-shadow: 0 0 5px #ddd;
+    -webkit-box-shadow: 0 0 5px #ddd;
+    box-shadow: 0 0 5px #ddd;
+    display: none;
+  }
+
+  .area .box ul.tab {
+    list-style: none;
+    display: flex;
+    border-bottom: 2px solid #edd28b;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .area .box ul.tab li {
+    height: 23px;
+    font-size: 14px;
+    padding: 2px 6px;
+    border: 1px solid #ddd;
+    border-bottom: 0;
+    margin-right: 5px;
+    background-color: #fff;
+    line-height: 22px;
+    text-decoration: none;
+  }
+
+  .area .box ul.tab li.cur {
+    border: 2px solid #edd28b;
+    border-bottom: 0;
+    margin-bottom: -2px;
+    height: 24px;
+    display: block;
+  }
+
+  .area .box .tab-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+  }
+
+  .area .box .tab-content .city {
+    padding: 8px 6px;
+    margin: 0px 5px;
+  }
+
+  .area .box .tab-content .city a {
+    color: #555;
+    text-decoration: none;
+  }
+
+  .area .box .tab-content .city a:hover {
+    color: red;
+  }
+
+  .area .box .tab-content .city span {
+    color: #555;
+    font-size: 12px;
+    padding: 5px;
+  }
+
+
+  .area .box .tab-content .city span:hover {
+    color: red;
+    font-weight: bold;
+  }
+
+
+  .area .box .tab-content .city.cur {
+    background-color: #eaeaea;
+  }
+
+  .area .box .tab-content .city:hover {
+    cursor: pointer;
+    background-color: #eaeaea;
+  }

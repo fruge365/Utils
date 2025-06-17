@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大屏可视化</title>
+    <!-- <link rel="stylesheet" href="./assets/css/reset.scss"> -->
+    <!-- 切记写css，sass编译一下 -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+</head>
+
+<body>
+    <!--测试-->
+    <!-- <div class="box"></div> -->
+    <!--header-->
+    <header>
+        <h1>大屏可视化</h1>
+        <span></span>
+    </header>
+    <!--main-->
+    <section class="main">
+        <div class="colunm">
+            <!--左侧分行-->
+            <div class="box" style="height:4rem"></div>
+            <div class="box" style="height:2.6rem"></div>
+            <div class="box" style="height:2.6rem"></div>
+        </div>
+        <div class="colunm">
+            <div class="box" style="height:2.3rem"></div>
+            <div class="box box-m2" id="m2" style="height:3.5rem"></div>
+            <div class="box" style="height:3.4rem"></div>
+        </div>
+        <div class="colunm">
+            <div class="box" style="height:3rem"></div>
+            <div class="box" style="height:3rem"></div>
+            <div class="box" style="height:3.2rem"></div>
+        </div>
+    </section>
+    <script src="./assets/js/flexible.js"></script>
+    <script src="http://unpkg.zhimg.com/jquery"></script>
+    <script src="http://unpkg.com/echarts"></script> 
+    <script src="./assets//js/left1.js"></script>
+    <script src="./assets/js/main2.js"></script>
+    <!--右上角时间-->
+    <script src="https://unpkg.com/webopenfather-date@1.0.1/dist/wofDate.js"></script>
+    <script>
+        setInterval(() => {
+            $('header span').html(wofDate.format('Y年m月d日H时i分s秒'))
+        }, 1000)
+    </script>
+</body>
+</body>
+
+</html>

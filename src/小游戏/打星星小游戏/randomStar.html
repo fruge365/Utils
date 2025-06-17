@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>randomStar</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            background-color: black;
+        }
+        div{
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 50px;
+            width: 100px;
+            border: 5px solid yellow;
+            transition: linear 60s;
+            z-index: 99;
+        }
+        div span{
+            width: 100px;
+            height: 50px;
+            background-color: red;
+            display: block;
+            transition: linear 60s;
+        }
+        body:hover div>span{
+            width: 0;
+        }
+        h1{
+            position:fixed;
+            top: 0;
+            right: 250px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span></span>
+    </div>
+    <h1>0</h1>
+</body>
+</html>
+<script>
+
+    setInterval('randomStar()',1000)
+    //间隔计时器，每隔一秒触发
+
+    //生成星星
+    function randomStar(){
+        var imgObj = document.createElement('img')
+        //造img
+        imgObj.src = './xing.png'
+        //修改img的路径
+        var starwidth = Math.floor(Math.random()*(60-30+1)+30)
+        //随机生成星星的宽度
+        imgObj.style.width = starwidth + 'px'
+        
+        var maxleft = (window.innerWidth || document.documentElement.clientWidth) - starwidth
+        var maxtop = (window.innerHeight || document.documentElement.clientHeight) - starwidth
+        //距离左边/上面最大距离不会超过   可视窗口-星星宽度
+        imgObj.style.position = 'absolute'
+        imgObj.style.left = Math.floor(Math.random()*(maxleft-0+1)-0) + 'px'
+        imgObj.style.top = Math.floor(Math.random()*(maxtop-0+1)-0) + 'px'
+        //随机生成星星的位置
+
+        document.body.appendChild(imgObj)
+        //把新增的图片追加到body中
+    }
+    //删除星星
+     var score  = 0
+    document.body.addEventListener('click',function(evt){
+        var e = evt || window.event
+        //获取事件对象
+            if(e.target.nodeName === 'IMG'){
+            this.removeChild(e.target)
+            //判断是不是img标签
+            //‘IMG’切记是大写！
+            score += 1
+                console.log(score);
+                
+    // console.log(document.querySelector('h1').innerHTML);
+    document.querySelector('h1').innerHTML = score
+        }
+    })
+
+    setTimeout(function(){
+        alert('游戏结束了~')
+    },60000)
+    
+
+</script>

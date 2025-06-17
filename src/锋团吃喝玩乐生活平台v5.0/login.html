@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>登录 | 锋团网</title>
+    <link rel="icon" href="imgs/favicon.ico" sizes="16x16 32x32" />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <link rel="stylesheet" href="./assets/css/animate.css" />
+    <link rel="stylesheet" href="./assets/css/login.css" />
+    <link
+      rel="stylesheet"
+      href="//at.alicdn.com/t/font_2766798_np7ovj5ke2.css"
+    />
+  </head>
+
+  <body>
+    <!-- header -->
+    <header class="wof-fallDown">
+      <a href="./index.html">
+        <img src="./assets/imgs/logo.png" alt="logo" />
+      </a>
+    </header>
+
+    <!-- section -->
+    <section>
+      <img
+        class="animate__animated animate__fadeInLeft"
+        src="./assets/imgs/nainai.jpeg"
+        width="480"
+        height="370"
+        alt="锋团网"
+      />
+      <!-- 登录表单 -->
+      <style>
+        .geetest_captcha .geetest_holder,
+        .geetest_popup_wrap .geetest_holder {
+          width: 280px;
+        }
+
+        #captchaBigData {
+          margin-bottom: 20px;
+          margin-left: 90px;
+        }
+
+        .geetest_captcha
+          .geetest_holder
+          .geetest_content
+          .geetest_tip_container
+          .geetest_logo,
+        .geetest_popup_wrap
+          .geetest_holder
+          .geetest_content
+          .geetest_tip_container
+          .geetest_logo {
+          margin-top: -10px;
+        }
+      </style>
+      <form action="java.html" class="animate__animated animate__fadeInRight">
+        <!-- 账号登录 -->
+        <div class="account-login" style="position: relative">
+          <p><span class="active">账号登录</span></p>
+          <input
+            type="text"
+            class="account uname"
+            placeholder="请输入用户名或手机号"
+          />
+          <input type="password" class="pwd" placeholder="请输入密码" />
+          <i
+            class="iconfont icon-jurassic_loseeyes showPassword"
+            style="position: absolute; right: 105px; top: 112px"
+          ></i>
+
+          <!-- 行为验证码 -->
+          <div id="captcha0"></div>
+          <!-- 行为验证码 -->
+
+          <p>
+            <input type="checkbox" class="remember" id="remember" />
+            <label for="sms-remember">勾选七天免登录</label>
+          </p>
+          <button class="wof-button wof-button--yellow account denglu">
+            账号登录
+          </button>
+          <button class="wof-button wof-button--info duanxin">短信登录</button>
+          <button class="wof-button wof-button--info">扫码登录</button>
+        </div>
+        <!-- 账号登录 -->
+
+        <!-- 短信登录 -->
+        <div class="sms-login">
+          <p><span class="active">短信登录</span></p>
+          <input type="text" class="mobile" placeholder="请输入手机号" />
+          <input type="text" maxlength="6" class="code" placeholder="动态码" />
+          <a href="javascript:;">获取手机动态码</a>
+
+          <!-- 行为验证码 -->
+          <div id="captcha1"></div>
+          <!-- 行为验证码 -->
+
+          <p>
+            <input type="checkbox" class="remember" id="sms-remember" />
+            <label for="sms-remember">勾选七天免登录</label>
+          </p>
+          <button class="wof-button wof-button--yellow sms">短信登录</button>
+          <button class="wof-button wof-button--info">账号登录</button>
+          <button class="wof-button wof-button--info">扫码登录</button>
+        </div>
+        <!-- 短信登录 -->
+
+        <!-- 短信登录 -->
+        <div class="saoma-login">
+          <p><span class="active">扫码登录</span></p>
+          <!-- <img src="./assets/imgs/ewm.png" alt="二维码" width="270"> -->
+          <div id="saomaImg" style="width: 270px"></div>
+          <button class="wof-button wof-button--yellow saoma">
+            刷新二维码
+          </button>
+          <button class="wof-button wof-button--info">短信登录</button>
+          <button class="wof-button wof-button--info">账号登录</button>
+        </div>
+        <!-- 短信登录 -->
+        <p>
+          还没有账号？
+          <a href="./registry.html">免费注册</a>
+        </p>
+      </form>
+      <!-- 登录表单 -->
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="site-info-nav cf">
+        <ul>
+          <li class="first">
+            <a
+              rel="nofollow"
+              href="https://about.fengtuan.zhaodashen.cn/about.html"
+            >
+              关于锋团
+            </a>
+          </li>
+          <li>
+            <a rel="nofollow" href="https://zhaopin.fengtuan.zhaodashen.cn/">
+              加入我们
+            </a>
+          </li>
+          <li>
+            <a
+              rel="nofollow"
+              href="http://emis.meishi.fengtuan.zhaodashen.cn/merchantsSettled"
+            >
+              商家入驻
+            </a>
+          </li>
+          <li>
+            <a rel="nofollow" href="https://fengtuan.zhaodashen.cn/help/faq">
+              帮助中心
+            </a>
+          </li>
+          <li class="last">
+            <a href="http://fengtuan.zhaodashen.cn/mobile">锋团手机版</a>
+          </li>
+        </ul>
+      </div>
+      <div class="copyright">
+        <p>
+          ©
+          <span>2021</span>
+          <a href="https://fengtuan.zhaodashen.cn">锋团网团购</a>
+          fengtuan.zhaodashen.cn
+          <a href="http://www.miibeian.gov.cn/" target="_blank">
+            宁ICP证123456号
+          </a>
+          宁公网安备12345678901234号
+        </p>
+      </div>
+    </footer>
+
+    <!-- 私有别动 -->
+    <script src="./assets/js/_jquery.js"></script>
+    <script src="./assets/js/_login.js"></script>
+    <script src="./assets/js/alert.js"></script>
+    <script src="./assets/js/common-captcha-gt4.js"></script>
+    <script src="./assets/js/login.js"></script>
+    <script src="http://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/jquery.qrcode@1.0.3/jquery.qrcode.min.js"></script>
+    <script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+    
+    <!-- 私有别动 -->
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<style>
+    img{
+        width: 30px;
+        height: 25px;
+        position: absolute;
+    }
+</style>
+<body>
+    <img src="./mf.jpg" alt="">
+</body>
+<script>
+    document.querySelector('body').onmousemove = function(evt){
+        var e = evt || window.event
+        var img = document.querySelector('img')
+        img.style.left = e.clientX + 'px'
+        img.style.top = e.clientY + 'px'
+    }
+</script>

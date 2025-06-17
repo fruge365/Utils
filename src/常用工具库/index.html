@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./utils.js"></script>
+    <title>刚刚/随机背景颜色/当前时间</title>
+    <style>
+        .colorRandom{
+            width: 100%;
+            height: 50px;
+        }
+        #getStyle{
+            background-color: black;
+            width: 100%;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>一、刚刚/日期格式化</h1>
+    <div>输入时间格式:2022-01-01 12:00:00</div><br>
+    <script>
+        var inputDate = prompt('请输入时间 例如:2022-01-01 12:00:00')
+        document.write('格式化后的时间:'+dateFormat(inputDate))
+    </script>
+
+    <h1>二、随机背景颜色</h1>
+    <h2 class="colorRandom"></h2>
+    <script>
+        document.querySelector('.colorRandom').style.background = colorRandom()
+    </script>
+
+    <h1>三、快速获取当前时间</h1>
+    <script>
+    document.write(format())
+    </script>
+
+    <h1>四、判断浏览器类型</h1>
+    <h3>浏览器名称</h3>
+    <script>document.write(browser())</script>
+    <h3>判断是pc还是移动</h3>
+    <script>
+    document.write(isPC())
+    </script>
+    <h3>是不是微信浏览器</h3>
+    <script>
+    document.write(IsnotWeChat())
+    </script>
+
+    <h1>五、获取非行内样式</h1>
+    <div id="getStyle"></div>
+    <script>
+        document.write(getStyle(document.getElementById('getStyle'),'background'))
+    </script>
+    <h1>六、获取网址参数</h1>
+    <script>
+        document.write(getParam('https://m.maizuo.com/gateway?cityId=440100&pageNum=1&pageSize=10&type=1&k=8252996'))
+        document.write('控制台查看')
+        console.log(getParam('https://m.maizuo.com/gateway?cityId=440100&pageNum=1&pageSize=10&type=1&k=8252996'));
+    </script>
+</body>
+</html>
+
+
+
+

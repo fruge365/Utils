@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tab</title>
+<link rel="stylesheet" href="./demo.css">
+</head>
+<body>
+    <!-- Tab选项卡1 -->
+    <div class="box tab1">
+        <!-- 标题 -->
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <!-- 内容 -->
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </div>
+</body>
+<script>
+    //获取所有ul标签里面的li
+    let ulliObjs = document.querySelectorAll('.box ul li')
+    //遍历
+    ulliObjs.forEach((item,i) => {
+        item.onmouseover = function(){  //给每个li标签绑定事件
+            document.querySelector('ul li.active').className = ''   //将ul下li标签有类名active的清空
+            this.className = 'active'   //this指向事件源即item，item是当前li标签，将当前li标签的class改为active
+
+            document.querySelector('ol li.active').className = ''   //将ol下li标签有类名active的清空
+            let olliObjs = document.querySelectorAll('ol li')       //获取ol下所有的li标签
+            olliObjs[i].className = 'active'                        //olloObjs[0]   ol下第一个li标签
+                                                                    //olloObjs[1]   ol下第二个li标签
+                                                                    //olloObjs[2]   ol下第三个li标签
+        }
+    })
+
+    
+</script>

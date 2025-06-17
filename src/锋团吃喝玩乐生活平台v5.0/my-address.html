@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>会员中心 | 锋团网</title>
+    <link rel="icon" href="imgs/favicon.ico" sizes="16x16 32x32" />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="./assets/css/member.css" />
+    <link rel="stylesheet" href="./assets/css/address-member.css" />
+
+    <!-- 公共图标、门店列表独享评分图标 -->
+    <link
+      rel="stylesheet"
+      href="//at.alicdn.com/t/font_3415525_x2055fdbz2.css"
+    />
+
+    <!-- 私有别动 -->
+    <script src="./assets/js/_jquery.js"></script>
+    <script src="./assets/js/_common-header.js"></script>
+    <!-- 私有别动 -->
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="bar">
+        <div class="bar-content">
+          <!-- city -->
+          <div class="city">
+            <i class="iconfont icon-dingwei"></i>
+            <span class="choose-city">南京</span>
+
+            <!-- 请手动选择 -->
+            <div class="area">
+              <div class="change-city">
+                切换城市
+                <b></b>
+              </div>
+              <div class="box">
+                <ul class="tab">
+                  <li class="cur">请选择</li>
+                  <li class="">请选择</li>
+                  <li class="">请选择</li>
+                </ul>
+                <div class="tab-content">
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">
+                      <i class="iconfont icon-banbenqiehuan"></i>
+                    </span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京1</a>
+                    <span title="选择">
+                      <i class="iconfont icon-qiehuan"></i>
+                    </span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京2</a>
+                    <span title="选择">
+                      <i class="iconfont icon-qiehuanchengshi"></i>
+                    </span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京3</a>
+                    <span title="选择">
+                      <i class="iconfont icon-qiehuan1"></i>
+                    </span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">
+                      <i class="iconfont icon-qiehuan2"></i>
+                    </span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">
+                      <i class="iconfont icon-changyong_qiehuan"></i>
+                    </span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">
+                      <i class="iconfont icon-qiehuan3"></i>
+                    </span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">
+                      <i class="iconfont icon-qiehuan3"></i>
+                    </span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">
+                      <i class="iconfont icon-qiehuan3"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="tab-content" style="display: none">
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京4</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京5</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京6</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                </div>
+                <div class="tab-content" style="display: none">
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京7</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京8</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京9</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                  <div class="city" area-id="1">
+                    <a href="javascript:;">北京</a>
+                    <span title="选择">☑️</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 请手动选择 -->
+          </div>
+          <!-- city -->
+
+          <!-- login -->
+          <div class="login">
+            <!-- 已登录 -->
+            <!-- <a href="./member.html">用户名</a>
+      <a href="./logout.html">退出</a> -->
+            <!-- 已登录 -->
+
+            <!-- 未登录 -->
+            <a href="./login.html">你好，请登录</a>
+            <a href="./registry.html">免费注册</a>
+            <a href="./order.html">我的订单</a>
+            <!-- 未登录  -->
+          </div>
+          <!-- login -->
+        </div>
+      </div>
+      <div class="content">
+        <a href="./index.html">
+          <img src="./assets/imgs/logo.png" alt="" class="logo" />
+        </a>
+        <div class="search">
+          <input
+            class="header-search-input"
+            type="text"
+            placeholder="搜索商家或地点"
+          />
+          <button class="header-search-btn">
+            <span
+              class="header-icon icon-search-new iconfont icon-sousuo"
+            ></span>
+          </button>
+        </div>
+        <div></div>
+      </div>
+    </header>
+    <!-- header -->
+
+    <!-- content -->
+    <div class="page index" data-reactroot="">
+      <div class="userexinfo-container">
+        <div class="clearfix">
+          <!-- 会员中心菜单 -->
+          <script src="./assets/js/member-menu.js"></script>
+          <!-- 会员中心菜单 -->
+          <div class="userinfo-box">
+            <div class="my-page">
+              <div class="user-info-box">
+                <div class="user-info">
+                  <div class="head-img">
+                    <a
+                      href="https://fengtuan.zhaodashen.cn/account/settings"
+                      target="_blank"
+                    >
+                      <img src="./assets/imgs/webopenfather.jpg" alt="" />
+                    </a>
+                  </div>
+                  <div class="nick-name">
+                    <a
+                      href="https://fengtuan.zhaodashen.cn/account/settings"
+                      target="_blank"
+                    >
+                      <p class="nick-name-txt">
+                        神龙教主
+                        <i
+                          class="levelIconNew iconfont_level icon-new-level_4"
+                        ></i>
+                        <img src="./assets/imgs/vip.png" alt="" class="vip" />
+                      </p>
+                    </a>
+                    <p class="user-money">
+                      我的余额：￥
+                      <!-- -->
+                      0
+                      <!-- -->
+                      ·
+                      <a
+                        href="https://npay.fengtuan.zhaodashen.cn/resource/cashier/recharge-card.html"
+                        target="_blank"
+                      >
+                        充值卡充值
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="recommend-list clearfix">
+                <div class="list-head">
+                  <!-- <p>收获地址设置 <b>学it认准前端扛把子</b></p> -->
+                </div>
+                <!-- 内容 -->
+                <div class="">
+                  <div class="clearfix">
+                    <div class="">
+                      <!-- 收获地址 -->
+                      <div class="content fl ml10">
+                        <div class="address_hd">
+                          <h3>收货地址薄</h3>
+                          <div class="addressContent">
+                            <dl>
+                              <dt>
+                                1 神龙教主 中国 江苏 苏州 淀山湖镇 中国 安徽
+                                蚌埠 东市区 17398971180
+                              </dt>
+                              <dd>
+                                <a href="javascript:;" class="del">删除</a>
+                                &nbsp;&nbsp;&nbsp;
+                              </dd>
+                            </dl>
+
+                            <dl>
+                              <dt>2 123 中国 安徽 蚌埠 东市区 123 123</dt>
+                              <dd>
+                                <a href="javascript:;" class="del">删除</a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a
+                                  href="javascript:;"
+                                  class="default"
+                                  address_id="924"
+                                >
+                                  设为默认地址
+                                </a>
+                              </dd>
+                            </dl>
+                          </div>
+                        </div>
+                        <div class="address_bd mt10">
+                          <h4>新增/修改收货地址</h4>
+                          <form name="address_form">
+                            <ul>
+                              <li>
+                                <label>
+                                  <span>*</span>
+                                  收 货 人：
+                                </label>
+                                <input
+                                  type="text"
+                                  name="username"
+                                  class="txt"
+                                />
+                              </li>
+                              <li>
+                                <label>
+                                  <span>*</span>
+                                  所在地区：
+                                </label>
+                                <select name="province">
+                                  <option value="">请选择</option>
+                                  <option value="2">北京</option>
+                                </select>
+                                <select name="city">
+                                  <option>请选择</option>
+                                  <option>朝阳区</option>
+                                  <option>东城区</option>
+                                  <option>西城区</option>
+                                  <option>海淀区</option>
+                                  <option>昌平区</option>
+                                </select>
+                                <select name="district">
+                                  <option>请选择</option>
+                                  <option>西二旗</option>
+                                  <option>西三旗</option>
+                                  <option>三环以内</option>
+                                </select>
+                              </li>
+                              <li>
+                                <label>
+                                  <span>*</span>
+                                  详细地址：
+                                </label>
+                                <input
+                                  type="text"
+                                  name="address"
+                                  class="txt address"
+                                />
+                              </li>
+                              <li>
+                                <label>
+                                  <span>*</span>
+                                  手机号码：
+                                </label>
+                                <input type="text" name="mobile" class="txt" />
+                              </li>
+                              <li>
+                                <label>&nbsp;</label>
+                                <input
+                                  type="checkbox"
+                                  name="is_default"
+                                  value="1"
+                                  class="check"
+                                />
+                                设为默认地址
+                              </li>
+                              <li>
+                                <label>&nbsp;</label>
+                                <input
+                                  type="button"
+                                  class="addBtn"
+                                  value="保存"
+                                />
+                              </li>
+                            </ul>
+                          </form>
+                        </div>
+                      </div>
+                      <!-- 收获地址 -->
+                    </div>
+                  </div>
+                </div>
+                <!--  内容  -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content -->
+
+    <!-- 逻辑 -->
+    <script src="./assets/js/utils.js"></script>
+    <script src="https://mapapi.qq.com/web/mapComponents/geoLocation/v/geolocation.min.js"></script>
+    <script src="./assets/js/common-header-driver.js"></script>
+    <script src="./assets/js/common-header-position.js"></script>
+    <script src="./assets/js/common-header-choose.js"></script>
+    <script src="./assets/js/alert.js"></script>
+    <script src="./assets/js/my-address.js"></script>
+    <!-- 逻辑 -->
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<style>
+  body {
+    background-color: #f8f8f8;
+  }
+</style>
+
+<div
+  class="page1"
+  style="display: flex; justify-content: center; align-items: center"
+></div>
+
+<script src="./common-page.js"></script>
+<script>
+  // 创建对象 展示效果
+  let page1 = new Page(".page1", {
+    pageTag: {
+      first: "首页",
+      prev: "<",
+      list: null,
+      next: ">",
+      last: "末页",
+    },
+    pageInfo: {
+      pageNum: 1, // 当前页数
+      pageSize: 10, // 每页显示条数
+      totalData: 1001, // 总条数
+      totalPage: 100, // 总页数 = 向上取整（总条数 / 每页显示条数）
+      // 举例： 10条 每页2条   5页
+      // 举例： 11条 每页2条   6页
+      // 其次：目前总页数告诉你了
+      // 但是：实际工作中 插件自己计算的
+      // 只要：传递总条数和每页显示条数就行
+    },
+    callback: (pagenum) => {
+      console.log("点击分页啦：", pagenum);
+    },
+  });
+</script>

@@ -1,0 +1,27 @@
+<!-- 思路 -->
+<!-- 一、来个地图 -->
+<style>
+    .div{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+</style>
+<meta charset="utf-8">
+<div class="map"></div>
+
+<button class="start">开始</button>
+<button class="stop">停止</button>
+<script src="./snake.js"></script>
+<script src="./food.js"></script>
+<script src="./map.js"></script>
+<script src="./game.js"></script>
+<div class="div">它甚至能周游世界</div>
+<script>
+    const g = new Game('.map')
+
+    const start = document.querySelector('.start')
+
+    start.addEventListener('click', () => g.start())
+
+</script>

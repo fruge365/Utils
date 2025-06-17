@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登陆 | 美团网</title>
+  <link rel="icon" href="assets/imgs/favicon.ico" sizes="16x16 32x32">
+  <link rel="stylesheet" href="./assets/css/normalize.css">
+  <link rel="stylesheet" href="./assets/lib/animate.css">
+  <link rel="stylesheet" href="./assets/css/login.css">
+</head>
+
+<body>
+  <!-- header -->
+  <header class="wof-fallDown">
+    <a href="./index.html">
+      <img src="./assets/imgs/logo.png" alt="logo" />
+    </a>
+  </header>
+
+  <!-- section -->
+  <section>
+    <img class="animate__animated animate__fadeInLeft" src="./assets/imgs/nainai.jpeg" width="480" height="370"
+      alt="美团网">
+    <!-- 登陆表单 -->
+    <form action="java.html" class="animate__animated animate__fadeInRight">
+      <!-- 账号登录 -->
+      <div class="account-login">
+        <p><span class="active">账号登录</span></p>
+        <input type="text" class="account uname" placeholder="请输入用户名或手机号">
+        <input type="password" class="pwd" placeholder="请输入密码">
+        <p><input type="checkbox" class="remember" id="sms-remember"> <label for="sms-remember">勾选七天免登陆</label></p>
+        <button class="wof-button wof-button--yellow account" id="denglu">账号登录</button>
+        <button class="wof-button wof-button--info sms">短信登陆</button>
+        <button class="wof-button wof-button--info saoma">扫码登陆</button>
+      </div>
+      <!-- 账号登录 -->
+
+      <!-- 短信登陆 -->
+      <div class="sms-login">
+        <p><span class="active">短信登陆</span></p>
+        <input type="text" class="mobile" placeholder="请输入手机号">
+        <input type="text" maxlength="6" class="code" placeholder="动态码">
+        <a href="javascript:;">获取手机动态码</a>
+        <p><input type="checkbox" class="remember" id="sms-remember"> <label for="sms-remember">勾选七天免登陆</label></p>
+        <button class="wof-button wof-button--yellow sms">短信登陆</button>
+        <button class="wof-button wof-button--info account">账号登录</button>
+        <button class="wof-button wof-button--info saoma">扫码登陆</button>
+      </div>
+      <!-- 短信登陆 -->
+
+
+      <!-- 短信登陆 -->
+      <div class="saoma-login">
+        <p><span class="active">扫码登陆</span></p>
+        <img src="./assets/imgs/ewm.png" alt="二维码" width="270">
+        <button class="wof-button wof-button--yellow saoma">刷新二维码</button>
+        <button class="wof-button wof-button--info sms">短信登陆</button>
+        <button class="wof-button wof-button--info account">账号登录</button>
+      </div>
+      <!-- 短信登陆 -->
+      <p>还没有账号？<a href="./registry.html">免费注册</a></p>
+    </form>
+    <!-- 登陆表单 -->
+  </section>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="site-info-nav cf">
+      <ul>
+        <li class="first"><a rel="nofollow" href="https://about.meituan.com/about.html">关于美团</a></li>
+        <li><a rel="nofollow" href="https://zhaopin.meituan.com/">加入我们</a></li>
+        <li><a rel="nofollow" href="http://emis.meishi.meituan.com/merchantsSettled">商家入驻</a></li>
+        <li><a rel="nofollow" href="https://www.meituan.com/help/faq">帮助中心</a></li>
+        <li class="last"><a href="http://meituan.com/mobile">美团手机版</a></li>
+      </ul>
+    </div>
+    <div class="copyright">
+      <p>
+        ©<span>2021</span>
+        <a href="https://www.meituan.com">美团网团购</a>
+        meituan.com
+        <a href="http://www.miibeian.gov.cn/" target="_blank">京ICP证070791号</a>
+        京公网安备11010502025545号
+      </p>
+    </div>
+  </footer>
+  <script src="./assets/js/jquery-1.8.3.min.js"></script>
+  <script src="http://unpkg.zhimg.com/jquery"></script>
+  <script src="./assets/js/login.js"></script>
+</body>
+
+</html>
+
+<!-- <script src="http://unpkg.zhimg.com/jquery"></script> -->
+
+<script>
+  console.log('用户名：amoureux555');
+  console.log('密码：admin888');
+  $('#denglu').click(function (e) {
+    e.preventDefault()
+
+    // let account = document.querySelector('.uname')
+    // let pwd = document.querySelector('.pwd')
+    // 实现登录
+    $.post(
+      'http://kg.zhaodashen.cn/mt/web/user/login.jsp',
+      {
+        account: $('.uname').val(),
+        pwd: $('.pwd').val(),
+      },
+      res => {
+        if (res.meta.state === 200) {
+          console.log('登录成功', res);
+          console.log($('#sms-remember:checked'));
+          // if($('#sms-remember:checked')){
+          if($('#sms-remember').prop('checked')){
+            console.log('勾选了七天免登录');
+            localStorage.setItem('uname',res.data.uname)
+            localStorage.setItem('avatar',res.data.avatar)
+            localStorage.setItem('token',res.data.token)
+            localStorage.setItem('expires',(new Date).getTime()+20*1000)
+          }else{
+            console.log('没勾选了七天免登录');
+            sessionStorage.setItem('uname',res.data.uname)
+            sessionStorage.setItem('avatar',res.data.avatar)
+            sessionStorage.setItem('token',res.data.token)
+          }
+          location.href = './index.html'
+        } else {
+          console.log('登录失败', res);
+        }
+      },
+      'json',
+    )
+  })
+</script>
+<script src="./assets/imgs/202205161947309051.jpg"></script>

@@ -1,0 +1,61 @@
+<meta charset="utf-8">
+<style>
+    .img {
+        width: 450px;
+        height: 450px;
+        background-image: url(./imgs/电脑1.jpg);
+        position: relative;
+    }
+    /* 遮罩框 */
+    .img .mask {
+        position: absolute;
+        left:0;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background-color: #225eea;
+        opacity: .3;
+        display: none;
+    }
+    .enlarge {
+        /*
+        width: 860px;
+        height: 860px;
+        */
+        position: absolute;
+        left: 100%;
+        width: 191.1px;
+        height: 191.1px;
+        /* background-image: url(./imgs/电脑2.avif); */
+        background-image: url(./imgs/电脑3.jpg);
+        background-repeat: no-repeat;
+        background-position: 0 0 ;
+        display: none;
+    }
+    </style>
+<h1>面向对象</h1>
+<hr>
+<div class="box">
+    <!-- 图片 -->
+    <div class="img">
+        <!-- 遮罩框 -->
+        <div class="mask"></div>
+        <!-- 放大镜 -->
+        <div class="enlarge"></div>
+    </div>
+</div>
+<hr>
+<div class="box1">
+    <!-- 图片 -->
+    <div class="img">
+        <!-- 遮罩框 -->
+        <div class="mask"></div>
+        <!-- 放大镜 -->
+        <div class="enlarge"></div>
+    </div>
+</div>
+<script type="module">
+    import BcLarge from './面向对象.js'
+    let box  = new BcLarge('.box')
+    let box1  = new BcLarge('.box1')
+</script>

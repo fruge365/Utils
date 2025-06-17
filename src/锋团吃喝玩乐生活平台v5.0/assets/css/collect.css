@@ -1,0 +1,785 @@
+@charset "UTF-8";
+.userinfo-box {
+  width: 920px;
+  background: #fff;
+  padding: 20px 10px;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+}
+
+.iconfont,
+.star-cont .stars-light li .iconfont,
+.star-cont .stars-ul li .iconfont {
+  font-size: 12px;
+}
+
+.iconfont,
+body,
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+.imgbox {
+  display: block;
+  width: auto;
+  height: auto;
+  background: #e0e0e0;
+  background-size: 60% auto;
+}
+
+.imgbox img {
+  width: 100%;
+  height: 145px;
+}
+
+.star-cont {
+  display: inline-block;
+  width: 84px;
+  height: 24px;
+  position: relative;
+}
+
+.star-cont .stars-light,
+.star-cont .stars-ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin: 3px 0;
+  white-space: nowrap;
+  color: #c3c3c3;
+}
+
+.star-cont .stars-light li,
+.star-cont .stars-ul li {
+  margin: 0 !important;
+  border: 0 !important;
+  padding: 0 2px;
+  display: inline-block;
+}
+
+.star-cont .stars-light {
+  color: #F90;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
+.iconfont {
+  font-family: iconfont !important;
+  font-style: normal;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-zoom_icon:before {
+  content: "\e604";
+}
+
+.icon-star_icon:before {
+  content: "\e606";
+}
+
+.icon-btn_left:before {
+  content: "\e608";
+}
+
+.icon-btn_right:before {
+  content: "\e609";
+}
+
+.icon-header_location:before {
+  content: "\e60a";
+}
+
+.icon-close_icon:before {
+  content: "\e60b";
+}
+
+body,
+html {
+  font-size: auto !important;
+  font-family: "-apple-system", BlinkMacSystemFont, Roboto, "Helvetica Neue", "MIcrosoft YaHei", sans-serif !important;
+}
+
+.breadcrumbs {
+  font-size: 12px;
+  color: #222;
+  line-height: 17px;
+  padding: 19px 0;
+}
+
+.guess-you-like {
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 16px 20px 0;
+}
+
+.guess-you-like h4 {
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0 0 12px;
+  color: #333;
+}
+
+.guess-you-like h4 span {
+  float: right;
+  font-size: 12px;
+  color: #999;
+}
+
+.guess-you-like ul a {
+  display: block;
+  text-decoration: none;
+}
+
+.guess-you-like ul li {
+  margin-bottom: 20px;
+}
+
+.guess-you-like ul li .pic {
+  height: 106px;
+  border-radius: 4px;
+}
+
+.guess-you-like ul li .pic img {
+  border-radius: 4px;
+}
+
+.guess-you-like ul li .name {
+  font-size: 14px;
+  line-height: 20px;
+  color: #222;
+  margin: 10px 0 4px;
+}
+
+.guess-you-like ul li .desc {
+  font-size: 12px;
+  line-height: 17px;
+  color: #999;
+}
+
+.guess-you-like ul li .price {
+  font-size: 22px;
+  color: #f60;
+  line-height: 27px;
+}
+
+.pagination li,
+.pagination li span {
+  cursor: pointer;
+  line-height: 40px;
+  color: #999;
+  height: 40px;
+}
+
+.guess-you-like ul li .price b {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.guess-you-like ul li .price span {
+  float: right;
+  font-size: 12px;
+  color: #999;
+}
+
+.pagination {
+  text-align: center;
+  display: inline-block;
+}
+
+.pagination li {
+  width: 40px;
+  float: left;
+  margin: 0 10px;
+  text-align: center;
+  font-size: 16px;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background-color 0.5s;
+}
+
+.pagination li span {
+  border: 1px solid #E5E5E5;
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.pagination li .ellipsis {
+  border: 0;
+  border-radius: 0;
+}
+
+.pagination li .ellipsis:after {
+  content: "•••";
+  display: block;
+  letter-spacing: 2px;
+  color: #ccc;
+  font-size: 14px;
+  cursor: auto;
+}
+
+.pagination li .active {
+  color: #fff;
+  background-color: #13d1be;
+  border-color: #13d1be;
+}
+
+.pagination li .disabled {
+  color: #e5e5e5;
+  cursor: not-allowed;
+}
+
+.poi-page-btns {
+  margin: auto;
+  text-align: center;
+  height: 40px;
+  padding-top: 35px;
+}
+
+.poi-page-btns span {
+  display: inline-block;
+  margin: 0 10px;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.poi-page-btns .nor {
+  color: #999;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+}
+
+.poi-page-btns .on {
+  background-color: #13d1be;
+  border: 1px solid #13d1be;
+  color: #fff;
+}
+
+body,
+body h3,
+body h4,
+html,
+html h3,
+html h4 {
+  margin: 0;
+  padding: 0;
+}
+
+body img,
+html img {
+  display: block;
+  border: 0;
+}
+
+body li,
+body ul,
+html li,
+html ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  background-color: #f8f8f8;
+}
+
+.content {
+  width: 1190px;
+  margin: auto;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #222;
+}
+
+.store img {
+  width: 100%;
+  height: 100%;
+  height: 140px;
+  border-radius: 4px;
+}
+
+.left {
+  float: left;
+  width: 950px;
+}
+
+.left b {
+  font-weight: 400;
+}
+
+.left .filter {
+  position: relative;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.left .filter .hasSelect {
+  cursor: pointer;
+  height: 20px;
+  padding: 10px 0 10px 20px;
+  line-height: 20px;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 12px;
+}
+
+.left .filter .hasSelect span {
+  display: inline-block;
+}
+
+.left .filter .hasSelect .nor {
+  font-size: 14px;
+  color: #333;
+  margin-right: 18px;
+}
+
+.left .filter .hasSelect .sel {
+  border: 1px solid #13D1BE;
+  color: #13D1BE;
+  height: 18px;
+  margin-right: 10px;
+  padding: 0 7px;
+  border-radius: 10px;
+}
+
+.left .filter .hasSelect .sel:after {
+  margin-left: 5px;
+  content: "×";
+}
+
+.left .filter .hasSelect .clearAll {
+  color: #999;
+}
+
+.left .filter .condition {
+  padding-left: 20px;
+}
+
+.left .filter .condition .cont {
+  padding: 10px 0 0;
+  line-height: 20px;
+  overflow: hidden;
+}
+
+.left .filter .condition .cont .classification {
+  width: 65px;
+  color: #333;
+  font-size: 14px;
+  float: left;
+}
+
+.left .filter .condition .cont .all {
+  width: 53px;
+  text-align: center;
+  margin: 0 13px 0 9px;
+  color: #666;
+  float: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.left .filter .condition .cont .more {
+  color: #666;
+  float: left;
+  border-bottom: 1px solid #e5e5e5;
+  width: 788px;
+}
+
+.left .filter .condition .cont .more li {
+  float: left;
+  height: 28px;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 125px;
+}
+
+.left .filter .condition .cont .more li a,
+.left .filter .condition .cont .more li span {
+  color: #666;
+  padding: 0 10px;
+  display: inline-block;
+}
+
+.left .filter .condition .cont .more li a b,
+.left .filter .condition .cont .more li span b {
+  display: inline-block;
+}
+
+.left .filter .condition .cont .more .hasSub:after {
+  content: "";
+  margin-left: 4px;
+  vertical-align: -2px;
+  border: 4px solid transparent;
+  border-top-color: #666;
+  display: inline-block;
+}
+
+.left .filter .condition .popover {
+  display: none;
+  width: 510px;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  z-index: 1000;
+  cursor: auto;
+  -webkit-user-select: text;
+  user-select: text;
+  white-space: normal;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+  text-align: left;
+  background: #FFF;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+}
+
+.left .filter .condition .popover .arrow {
+  border-width: 5px;
+  left: 26px;
+  top: -10px;
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent #E5E5E5;
+  border-style: solid;
+}
+
+.left .filter .condition .popover .arrow:after {
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  content: "";
+  margin-top: -3px;
+  margin-left: -4px;
+  border-width: 4px;
+  border-color: transparent transparent #FFF;
+}
+
+.left .filter .condition .popover .p-content {
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 4px;
+}
+
+.left .filter .condition .popover .p-content .popover-content {
+  padding: 19px 15px 9px;
+}
+
+.left .filter .condition .popover .p-content .popover-content span {
+  color: #ccc;
+  font-size: 16px;
+  margin-bottom: 11px;
+  cursor: default;
+  display: block;
+}
+
+.left .filter .condition .popover .p-content .popover-content ul li {
+  font-weight: 400;
+  min-width: 120px;
+  margin-bottom: 5px;
+  float: left;
+  line-height: 20px;
+}
+
+.left .filter .condition .popover .p-content .popover-content ul li a {
+  padding: 0 10px;
+  display: inline-block;
+  color: #666;
+  margin-left: -10px;
+}
+
+.left .filter .condition .on {
+  background: #13D1BE;
+  color: #fff !important;
+  border-radius: 100px;
+}
+
+.left .filter .condition .on:after {
+  border-top-color: #fff !important;
+}
+
+.left .filter .condition .cont:last-child .more {
+  border-bottom: 0;
+}
+
+.tags {
+  padding-bottom: 13px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.tags span {
+  display: inline-block;
+  min-width: 96px;
+}
+
+.tags span a {
+  padding: 0 10px;
+}
+
+.tags .on {
+  color: #31BCAD;
+}
+
+.tags .price {
+  position: relative;
+}
+
+.tags .price:after,
+.tags .price:before {
+  top: 50%;
+  position: absolute;
+  content: "";
+  height: 0;
+  width: 0;
+  display: block;
+  right: 0;
+}
+
+.tags .price:before {
+  border: 3.2px solid transparent;
+  border-bottom-width: 4px;
+  border-bottom-color: #ccc;
+  margin-top: -8px;
+}
+
+.tags .price:after {
+  border: 3.2px solid transparent;
+  border-top-width: 4px;
+  border-top-color: #ccc;
+  margin-top: 1px;
+}
+
+.tags .onDownLight,
+.tags .onUpLight {
+  color: #13D1BE;
+}
+
+.tags .onUpLight:before {
+  border-bottom-color: #13D1BE;
+}
+
+.tags .onDownLight:after {
+  border-top-color: #13D1BE;
+}
+
+.list-ul .btm {
+  position: relative;
+  border-bottom: 1px solid #e5e5e5 !important;
+  padding-bottom: 18px;
+}
+
+.list-ul li {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.list-ul li .img {
+  width: 220px;
+  height: 125px;
+  float: left;
+  border-radius: 4px;
+  position: relative;
+}
+
+.list-ul li .img a {
+  display: block;
+}
+
+.list-ul li .img .fl-count {
+  background: #FB6433;
+  border-radius: 2px;
+  position: absolute;
+  line-height: 13px;
+  width: 20px;
+  margin-left: -3px;
+  margin-top: 3px;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  z-index: 200;
+}
+
+.list-ul li .info {
+  padding: 4px 0 0 20px;
+  max-width: 666px;
+  font-size: 12px;
+  float: left;
+}
+
+.list-ul li .info a {
+  display: block;
+}
+
+.list-ul li .info h4 {
+  font-size: 16px;
+  line-height: 22px;
+  color: #222;
+}
+
+.list-ul li .info .source {
+  padding: 6px 0 0;
+  height: 17px;
+  line-height: 13px;
+}
+
+.list-ul li .info .source .star-cont {
+  display: inline-block;
+}
+
+.list-ul li .info .source p {
+  display: inline-block;
+  padding-left: 6px;
+}
+
+.list-ul li .info .source p span {
+  margin-left: 10px;
+  color: #f60;
+}
+
+.list-ul li .info .desc {
+  line-height: 17px;
+  color: #666;
+  padding-top: 7px;
+  margin-bottom: 11px;
+}
+
+.list-ul li .info .desc span {
+  display: block;
+  margin-top: 8px;
+}
+
+.list-ul li .info .other {
+  border-top: 1px #e5e5e5 dashed;
+  padding: 12px 0 0;
+}
+
+.list-ul li .info .other .one {
+  padding-bottom: 18px;
+}
+
+.list-ul li .info .other .one h4 {
+  font-size: 14px;
+  line-height: 14px;
+  margin: 0 0 2px;
+  font-weight: 400;
+  color: #666;
+}
+
+.list-ul li .info .other .one p {
+  line-height: 21px;
+  font-size: 12px;
+  color: #999;
+}
+
+.list-ul li .info .other .one p span {
+  font-size: 15px;
+  color: #f60;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.list-ul li .info .other .one p span .dl {
+  font-size: 12px;
+}
+
+.list-ul li .info .other .one p .sale {
+  margin-left: 10px;
+}
+
+.list-ul li .info .other .more {
+  color: #999;
+  line-height: 17px;
+  cursor: pointer;
+}
+
+.list-ul li .info .other .more b {
+  vertical-align: middle;
+  width: 9px;
+  height: 4px;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.list-ul li:last-child {
+  border: 0;
+}
+
+.list-ul .advertisement {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  padding: 0 2px;
+  border: 1px solid #E5E5E5;
+  line-height: 15px;
+  color: #E5E5E5;
+}
+
+.no-res {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.right {
+  width: 230px;
+  float: right;
+}
+
+.right .platform-download {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  margin-top: 21px;
+  padding: 16px;
+}
+
+.com-footer,
+.poi-com-footer {
+  margin-top: 40px;
+}
+
+.clear:after {
+  clear: both;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.line {
+  height: 1px;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.mt-pagination {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.com-footer dl {
+  margin: 0;
+}
+
+.com-footer dd {
+  margin: 0;
+}

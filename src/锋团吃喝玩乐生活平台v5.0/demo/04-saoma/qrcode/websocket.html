@@ -1,0 +1,52 @@
+<script src="http://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/jquery.qrcode@1.0.3/jquery.qrcode.min.js"></script>
+
+<div id="qrcode"></div>
+
+<script>
+  function uuid() {
+    var s = [];
+    var hexDigits = "0123456789abcdef";
+    for (var i = 0; i < 36; i++) {
+      s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+    }
+    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+    s[8] = s[13] = s[18] = s[23] = "-";
+
+    var uuid = s.join("");
+    return new Date().getTime() + "-" + uuid;
+  }
+
+  // 留心：state位置不能变，qrcode实参的text键要用
+  let state = uuid();
+
+  jQuery("#qrcode").qrcode({
+    render: "canvas",
+    foreground: "#000",
+    background: "#FFF",
+    text: `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5a9db0b452e8ca0b&redirect_uri=http://kg.zhaodashen.cn/mt/web/qr/login.jsp&response_type=code&scope=snsapi_base&state=${state}&connect_redirect=1#wechat_redirect`,
+  });
+</script>
+
+<script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+<script>
+  // 创建 socket 对象
+  const socket = io("http://39.107.231.173:3001");
+
+  // 首次加入服务器监控队列
+  // 参数：state  【必须】全球唯一的登录标识
+  // 留心：state  是上面uuid()函数生成的
+  socket.emit("join", state);
+
+  // 监控服务器推送的登录信息
+  // 留心：超过2分钟不扫码登录二维码就会过期
+  // 过期推送数据：{meta:{state: 400, msg: "二维码已过期"},data:null}
+  socket.on("islogin", (res) => {
+    console.log(res.meta);
+    console.log(res.data);
+    // 提示登录成功
+    // h5存储
+    // 重定向跳转
+  });
+</script>

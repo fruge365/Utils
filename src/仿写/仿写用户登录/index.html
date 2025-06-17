@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<title>会员中心</title>
+<h1>会员中心</h1>
+
+<div class="userinfo"></div>
+
+<script>
+    //获取H5存储的数据
+    let sessionUname = sessionStorage.getItem('uname')
+    // if 当前时间 > 存的时间   就过期了
+    let localUname = (new Date).getTime() > localStorage.getItem('expires') ? null : localStorage.getItem('uname')
+
+    let uname = sessionUname || localUname
+    console.log('当前用户：',uname);
+    // 判断uname是否为空
+    if(uname){
+        // 有用户信息就显示用户名和退出
+        document.querySelector('.userinfo').innerHTML = 
+        `
+        <h4>${uname}</h4>
+        <a href = "./logout.html">退出</a>
+        `
+    }else{
+        //么有数据就是还没有登录、a标签让他登录
+        document.querySelector('.userinfo').innerHTML = 
+        `
+        <a href = "./login.html">登录</a>
+        `
+    }
+</script>

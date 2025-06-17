@@ -1,0 +1,36 @@
+<meta charset="UTF-8" />
+<style>
+  body {
+    width: 50%;
+    margin: auto;
+    margin-top: 200px;
+  }
+</style>
+<button id="sms">获取短信验证码</button>
+<button id="btn">登录</button>
+
+<script src="../../assets/js/_jquery.js"></script>
+<script src="./common-captcha-gt4.js"></script>
+<script>
+  // 显示行为验证码（注：返回的是promise对象）
+  const captcha = captchaBigData(() => {
+    // 弹出验证码回调，不写也可以
+    console.log("弹出验证码，验证成功");
+  });
+
+  // 获取验证码
+  $("#sms").click(async function () {
+    (await captcha).showCaptcha();
+  });
+
+  // 你的逻辑
+  $("#btn").click(async function () {
+    // 检查行为验证码是否验证成功
+    if (!(await captcha).getValidate()) {
+      return alert("【行为验证码】请完成验证码，验证！！！");
+    }
+    // 你的业务逻辑
+    alert("写出你的代码");
+    // 你的业务逻辑
+  });
+</script>

@@ -1,0 +1,62 @@
+<meta charset="UTF-8" />
+<h1>📌定位技术</h1>
+
+<h1>术语</h1>
+<h2>- 单词：latitude维度，江苏地界大概范围 3x.983724</h2>
+<h2>- 单词：longitude经度，江苏地界大概范围 1xx.260401</h2>
+<h2>
+  <a href="https://lbs.qq.com/getPoint/" target="_blank">
+    腾讯地图在线查看维度经度
+  </a>
+</h2>
+<img src="./map.webp" width="400" height="200" />
+
+<hr />
+
+<h1>参考案例</h1>
+<a href="https://h5.ele.me/" target="_blank">饿了么移动</a>
+<a href="https://bj.meituan.com/" target="_blank">美团PC端</a>
+<a href="https://m.maizuo.com/" target="_blank">卖座网</a>
+
+<hr />
+
+<h1>-方案1：HTML5 Geolocation 地理定位 API</h1>
+<pre>
+手册：https://www.runoob.com/html/html5-geolocation.html
+问题：不稳定、误差大
+原理：https://www.zhihu.com/question/20473051
+</pre>
+
+<h1>-方案2：使用第三方地图提供的API</h1>
+<button>点击获取纬度,经度</button>
+<script src="http://unpkg.com/jquery"></script>
+<script src="https://mapapi.qq.com/web/mapComponents/geoLocation/v/geolocation.min.js"></script>
+<script>
+  $("button").click(function () {
+    const geolocation = new qq.maps.Geolocation(
+      "J2VBZ-JD6CR-GWSWW-W52NP-WHEG5-VIFK3",
+      "fengtuan"
+    );
+    geolocation.getLocation(
+      (res) => {
+        let { lat, lng } = res;
+        console.log(res); // 纬度、经度、城市名等等等
+        console.log(`获取成功：${lat},${lng}`);
+        alert(`获取成功：${lat},${lng}`);
+        // 你的逻辑
+      },
+      (err) => {
+        console.error("出错啦：", err);
+      }
+    );
+  });
+</script>
+
+<hr />
+
+<h1>其他：腾讯地图计算两点之间距离</h1>
+<script src="./utils.js"></script>
+<script>
+  let rs2 = distance(32.016137, 118.755502, 32.028572, 118.739577);
+  console.log("千锋教育 =》 集庆门大街地铁", rs2);
+</script>

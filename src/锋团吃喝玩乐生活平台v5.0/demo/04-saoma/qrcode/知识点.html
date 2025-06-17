@@ -1,0 +1,21 @@
+传输层：tcp、udp协议
+
+应用层：http、https、ssh等 websocket
+
+
+websocket是什么：也是用于通信的技术，只不过是全双工通讯协议
+websocket哪里用：聊天、直播等
+websocket怎么用：
+
+
+ajax
+1 引入jq
+2 通过$.get/post/ajax发送请求才会返回
+
+websocket
+1 引入socket.io库
+<script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+2 通过
+发送：socket.emit('聊天频道', 数据)
+监控：socket.on('聊天频道', 数据 => {
+})

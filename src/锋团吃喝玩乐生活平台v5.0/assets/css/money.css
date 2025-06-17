@@ -1,0 +1,43 @@
+.ipt-free {
+  border: 1px solid #ACBEC6;
+  border-radius: 4px;
+  width: 140px;
+  height: 40px;
+  padding-left: 8px;
+  outline: none;
+}
+
+.box-ipt {
+  overflow: hidden;
+  width: 100%;
+  color: #757F82;
+  line-height: 40px;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.goods-items {
+  line-height: 50px;
+  padding: 10px 10px;
+  display: block;
+}
+.goods-items .total {
+  height: 50px;
+  font-size: 25px !important;
+  padding: 0 10px;
+}
+
+.all-items {
+  height: 145px;
+}
+
+.custom {
+  margin-left: 20px;
+}
+.custom p {
+  padding: 10px 0;
+}
+
+.pay .btn {
+  margin-left: 20px !important;
+}

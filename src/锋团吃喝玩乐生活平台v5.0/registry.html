@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>注册 | 锋团网</title>
+    <link rel="icon" href="imgs/favicon.ico" sizes="16x16 32x32" />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <link rel="stylesheet" href="./assets/css/animate.css" />
+    <link rel="stylesheet" href="./assets/css/registry.css" />
+  </head>
+
+  <body class="animate__animated animate__bounceInDown">
+    <!-- header -->
+    <header>
+      <div class="wrapper">
+        <a href="./index.html">
+          <img class="logo" src="./assets/imgs/logo.png" alt="logo" />
+        </a>
+        <div class="login">
+          <span>已有锋团账号？</span>
+          <a href="./login.html" class="wof-button wof-button--yellow">登录</a>
+        </div>
+      </div>
+    </header>
+    <!-- header -->
+
+    <!-- section -->
+    <section>
+      <form class="reg" action="java.html">
+        <p>
+          <span>用户名</span>
+          <input type="text" class="account" placeholder="请输入用户名" />
+        </p>
+        <p>
+          <span>密码</span>
+          <input type="password" class="pwd" placeholder="请输入密码" />
+        </p>
+        <p>
+          <span>确认密码</span>
+          <input type="password" class="pwd2" placeholder="请输入确认密码" />
+        </p>
+        <p class="captcha">
+          <span>验证码</span>
+          <input type="text" placeholder="请输入验证码" />
+          <img
+            src="http://kg.zhaodashen.cn/mt/web/captcha.jsp"
+            width="100"
+            height="39"
+            alt="captcha"
+          />
+        </p>
+        <button class="wof-button wof-button--yellow" id="regBtn">注册</button>
+        <p class="mobileBtn">📱 手机注册</p>
+      </form>
+
+      <form class="smsReg" action="java.html">
+        <p>
+          <span>手机号</span>
+          <input type="text" class="mobile" placeholder="请输入手机号" />
+        </p>
+        <p>
+          <span>验证码</span>
+          <input
+            type="text"
+            maxlength="6"
+            class="code"
+            placeholder="请输入手机验证码"
+          />
+          <a href="javascript:;" id="sendSmsBtn">获取手机动态码</a>
+        </p>
+        <!-- 行为验证码 -->
+        <style>
+          .geetest_captcha .geetest_holder,
+          .geetest_popup_wrap .geetest_holder {
+            width: 280px;
+          }
+
+          #captchaBigData {
+            margin-bottom: 20px;
+            margin-left: 90px;
+          }
+
+          .geetest_captcha
+            .geetest_holder
+            .geetest_content
+            .geetest_tip_container
+            .geetest_logo,
+          .geetest_popup_wrap
+            .geetest_holder
+            .geetest_content
+            .geetest_tip_container
+            .geetest_logo {
+            margin-top: -10px;
+          }
+        </style>
+        <div id="captchaBigData"></div>
+        <!-- 行为验证码 -->
+        <button class="wof-button wof-button--yellow regMobileBtn">
+          手机注册
+        </button>
+        <p class="mobileBtn">普通注册</p>
+      </form>
+    </section>
+    <!-- section -->
+
+    <!-- footer -->
+    <footer>
+      <p class="copyright">
+        ©
+        <a class="f1" href="https://fengtuan.zhaodashen.cn">
+          fengtuan.zhaodashen.cn
+        </a>
+        &nbsp;
+        <a class="f1" target="_blank" href="http://www.miibeian.gov.cn/">
+          宁ICP证123456号
+        </a>
+        &nbsp;
+        <span class="f1">宁公网安备12345678901234号</span>
+      </p>
+    </footer>
+    <!-- footer -->
+
+    <!-- 私有别动 -->
+    <script src="./assets/js/_jquery.js"></script>
+    <script src="./assets/js/alert.js"></script>
+    <script src="./assets/js/common-captcha-gt4.js"></script>
+    <script src="./assets/js/_registry.js"></script>
+    <!-- 私有别动 -->
+
+    <!-- 逻辑 -->
+    <script>
+      $(function () {
+        //...
+        //已有账号点击跳转
+        $(".login a").click(function () {
+          location.href = "./login.html";
+        });
+        // ### 点击切换图片验证码
+        $(".captcha img").click(function () {
+          $(".captcha img").attr(
+            "src",
+            `http://kg.zhaodashen.cn/mt/web/captcha.jsp?${new Date().getTime()}`
+          );
+        });
+
+        // ### 普通注册
+        $("#regBtn").click(function (evt) {
+          let e = evt || window.event;
+          e.preventDefault();
+          let uname = $(".reg p:eq(0) input").val();
+          let pwd = $(".reg p:eq(1) input").val();
+          let pwd2 = $(".reg p:eq(2) input").val();
+          let captcha = $(".reg p:eq(3) input").val();
+          if (!uname || !pwd || !pwd2 || !captcha) {
+            cocoMessage.error("请把表单数据填写完整后再注册", 3000);
+            return;
+          }
+          if (pwd !== pwd2) {
+            cocoMessage.info("两次输入的密码不一致", 3000);
+            return;
+          }
+          $.post(
+            "http://kg.zhaodashen.cn/mt/web/user/registry.jsp",
+            {
+              uname,
+              pwd,
+              captcha,
+            },
+            (res) => {
+              if (res.meta.state === 201) {
+                // console.log("拿到数据了", res);
+                cocoMessage.success("注册成功(*^_^*),登录跳转中.....", 3000);
+                setTimeout(() => {
+                  location.href = "./login.html";
+                }, 3000);
+              } else {
+                // console.log("失败了", res);
+                cocoMessage.error(`失败了/(ㄒoㄒ)/~~,${res.meta.msg}`);
+              }
+            },
+            "json"
+          );
+        });
+
+        // ### 手机号注册
+        let t = null;
+        let time = 11;
+        let captcha = null;
+        $(".mobileBtn").click(function () {
+          let isFindCaptcha = $(".smsReg  #captchaBigData")
+            .text()
+            .replace(/\s/g, "");
+          if (!isFindCaptcha)
+            captcha = captchaBigData(".smsReg #captchaBigData");
+        });
+
+        //手机号输入框绑定失焦事件
+        $(".mobile").blur(function () {
+          let mobile = $(".mobile").val();
+          if (!mobile) {
+            cocoMessage.error(`手机号不能为空`, 3000);
+            return;
+          }
+          if (!/^1\d{10}$/.test(mobile)) {
+            // console.log("手机号输入不正确");
+            cocoMessage.error(`手机号输入不正确`, 3000);
+            return;
+          }
+        });
+
+        //获取发送验证码按钮，绑定点击事件
+        $("#sendSmsBtn").click(async function () {
+          let mobile = $(".mobile").val();
+          if (!mobile) {
+            cocoMessage.error("请输入手机号码");
+            return;
+          }
+
+          //正则判断手机号
+          if (!/^1\d{10}$/.test(mobile)) {
+            console.log("手机号输入不正确");
+            cocoMessage.error(`手机号输入不正确`, 3000);
+            return;
+          }
+          if (!(await captcha).getValidate()) {
+            cocoMessage.error("未完成行为验证码");
+            return;
+          }
+
+          //节流防抖,优化项目
+          if (time !== 11) return;
+          time--;
+          $(this).text(`验证码已发送${time}`);
+          t = setInterval(() => {
+            time--;
+            // $("#sendSmsBtn").text(`验证码已发送${time}`);
+            $(this).text(`验证码已发送${time}`);
+            if (time <= 0) {
+              clearInterval(t);
+              // $("#sendSmsBtn").text(`获取手机验证码`);
+              $(this).text(`获取手机验证码`);
+              time = 11;
+              return;
+            }
+          }, 1000);
+          //发送异步请求
+          $.post(
+            "http://kg.zhaodashen.cn/mt/web/sms/send.jsp",
+            {
+              mobile,
+            },
+            (res) => {
+              if (res.meta.state === 201) {
+                // console.log("手机验证码已发送", res);
+                cocoMessage.success("手机验证码已发送", 3000);
+              } else {
+                // console.log(res);
+                cocoMessage.error(`验证码发送失败${res.meta.msg}`, 3000);
+              }
+            },
+            "json"
+          );
+        });
+
+        //获取手机注册按钮，绑定事件
+        $(".regMobileBtn").click(async function (e) {
+          //阻止浏览器默认提交
+          e.preventDefault();
+          if (!(await captcha).getValidate()) {
+            cocoMessage.error("未完成行为验证码");
+            return;
+          }
+          let mobile = $(".mobile").val();
+          let code = $(".code").val();
+          if (!mobile || !code) {
+            cocoMessage.error("请将表单数据填写完整");
+            return;
+          }
+          if (!/^1\d{10}$/.test(mobile)) {
+            // console.log("手机号输入不正确");
+            cocoMessage.error(`手机号输入不正确`, 3000);
+            return;
+          }
+          $.post(
+            "http://kg.zhaodashen.cn/mt/web/sms/registry.jsp",
+            {
+              mobile,
+              code,
+            },
+            (res) => {
+              if (res.meta.state === 201) {
+                // console.log("注册成功", res);
+                cocoMessage.success("注册成功(*^_^*),登录跳转中.....", 3000);
+
+                setTimeout(() => {
+                  location.href = "./login.html";
+                }, 3000);
+              } else {
+                // console.log("手机注册失败", res);
+                cocoMessage.error(`注册失败,${res.meta.msg}`, 3000);
+              }
+            },
+            "json"
+          );
+        });
+
+        //...
+      });
+    </script>
+    <!-- 逻辑 -->
+  </body>
+</html>

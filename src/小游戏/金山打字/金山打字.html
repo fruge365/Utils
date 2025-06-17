@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+<style>
+    div h1{
+        display: inline-block;
+    }
+    html,body{
+        height: 100%;
+        width: 100%;
+    }
+</style>
+<body>
+    <div>得分：<h1>0</h1></div>
+</body>
+<script>
+    //生成字母
+    function random(){
+        // 造div存生成的字母
+        var fontObj = document.createElement('div')
+        fontObj.className = 'font'
+        //随机字母
+        var min = 0
+        var max = 25
+        index = Math.floor(Math.random()*(max-min+1)+min)
+        fontObj.innerText = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')[index]
+        //字母随机位置
+        fontObj.style.position = 'absolute'
+
+        var leftmin = 0
+        var leftmax = (window.innerWidth || document.documentElement.clientWidth)
+        var left = Math.floor(Math.random()*(leftmax-leftmin+1)+leftmin)
+        fontObj.style.left = left + 'px'
+
+        var topmin = 0
+        var topmax = (window.innerHeight || document.documentElement.clientHeight)
+        var top = Math.floor(Math.random()*(topmax-topmin+1)+topmin)
+        fontObj.style.top = top + 'px'
+
+        document.body.appendChild(fontObj)
+
+        
+    }
+    setInterval(random,1000)
+
+    //删除字母
+
+    var score = 0
+    document.onkeyup = function(evt){
+        var e = evt || window.event
+        console.log('检测到键盘抬起');
+
+        var fonts = document.querySelectorAll('div.font')
+        fonts.forEach(function(item){
+            if(item.innerText.toUpperCase() === e.key.toUpperCase()){
+                //  删除
+                document.body.removeChild(item)
+                score += 1
+            }
+        })
+        document.querySelector('div>h1').innerText = score
+    }
+
+    
+</script>

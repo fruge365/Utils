@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="page.css">
+
+<div class="page1"></div>
+<div class="page2"></div>
+
+<script src="./page.js" charset="utf-8"></script>
+
+
+<script>
+    //构造函数创建实例化对象
+    //有两个实参
+    let page1 = new Page('.page1', {         //国内版
+        pageTag: {
+            first: '首页',
+            prev: '上一页',
+            list: null,
+            next: '下一页',
+            last: '末页'
+        },
+        pageInfo: {
+            pageNum: 2,                      //当前页数
+            pageSize: 10,                    //每页显示条数
+            totalData: 1000,                 //总条数
+            totalPage: 100,                  //总页数 = 向上取整（总条数/每页显示条数）
+        }
+    })
+
+    let page2 = new Page('.page2', {         //国际版
+        pageTag: {
+            first: 'first',
+            prev: 'prev',
+            list: null,
+            next: 'next',
+            last: 'last'
+        },
+        pageInfo: {
+            pageNum: 2,
+            pageSize: 10,
+            totalData: 1000,
+            totalPage: 100,
+        }
+    })
+</script>

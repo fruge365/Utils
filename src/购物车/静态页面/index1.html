@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery特效制作复选框,全选,反选,取消,购物车，统计价格，统计，淘宝</title>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<style>
+table .web0225 input {width: 80px; height: 25px; float: left; border-radius: 15px; background: red; margin-bottom: 5px;color: #fff; cursor: pointer;}
+table .web0225 input:hover {color: yellow}
+</style>  
+</head>
+<body>
+    <div class="gwc" style=" margin:auto;">
+        <table cellpadding="0" cellspacing="0" class="gwc_tb1">
+            <tr>
+                <td class="tb1_td1"><input type="checkbox"  id="allselect" /></td>
+                <td class="tb1_td1">全选</td>
+                <td class="tb1_td3">商品</td>
+                <td class="tb1_td4">商品信息</td>
+                <td class="tb1_td5">数量</td>
+                <td class="tb1_td6">单价</td>
+                <td class="tb1_td7">操作</td>
+            </tr>
+        </table>  
+        <table cellpadding="0" cellspacing="0" class="gwc_tb2">
+            <tr>
+                <td class="tb2_td1">
+                    <input class="goodsInput" type="checkbox" value="1" name="newslist" id="newslist-1" />
+                </td>
+                <td class="tb2_td2"><a href="#"><img src="images/img1.jpg"/></a></td>
+                <td class="tb2_td3"><a href="#">产品标题</a></td>
+                <td class="tb1_td4">一件</td>
+                <td class="tb1_td5">
+                    <input class="delBtn" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
+                    <input class="num" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
+                    <input class="addBtn" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
+                </td>
+                <td class="tb1_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;">1</label></td>
+                <td class="tb1_td7"><a href="javascript:void(0);"  class="del">删除</a></td>
+            </tr>
+            <tr>
+                <td class="tb2_td1">
+                    <input type="checkbox" class="goodsInput"  value="1" name="newslist" id="newslist-2" />
+                </td>
+                <td class="tb2_td2"><a href="#"><img src="images/img2.jpg"/></a></td>
+                <td class="tb2_td3"><a href="#">产品标题</a></td>
+                <td class="tb1_td4">一件</td>
+                <td class="tb1_td5">
+                    <input class="delBtn" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
+                    <input class="num" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
+                    <input class="addBtn" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
+                </td>
+                <td class="tb1_td6"><label id="total2" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;">1</label></td>
+                <td class="tb1_td7"><a href="javascript:void(0);"  class="del">删除</a></td>
+            </tr>
+        </table>
+
+        <table cellpadding="0" cellspacing="0" class="gwc_tb3">
+            <tr>
+                <td class="tb1_td1 web0225">
+                    <input type="button" value="添加商品" id='addGoods'/>
+                    <input type="button" value="复选框反选" id='fanselect' />
+                </td>
+                <td class="tb1_td1">&nbsp;</td>
+                <td class="tb3_td1">&nbsp;</td>
+                <td class="tb3_td2">已选商品 <label id="shuliang" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> 件</td>
+                <td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;"><label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;">1</label></span></td>
+                <td class="tb3_td4"><span id="jz1">结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2">结算</a></td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script>
+    //统计商品数
+    function sumFn(){
+        let sumNumber=0
+        let sumPrice=0
+        $('.goodsInput:checked').each((i,item) => {
+            let num=$(item).parents('tr').find('.num').val()
+            let price=$(item).parents('tr').find('.tot').text()
+            console.log(price);
+            sumNumber += parseInt(num)
+            sumPrice += parseInt(num)*(parseFloat(price)*100)
+        })
+        $('#shuliang').text(sumNumber)
+        $('#zong1').text(sumPrice/100)
+        // console.log(sumPrice/100);
+    }
+
+
+    $('table:eq(1) tbody').on('click','.goodsInput',function(){
+        sumFn()
+        let status = $('.goodsInput:checked').length === $('.goodsInput').length
+        $('#allselect').prop('checked', status)
+    })
+    //全选，全不选
+    $('#allselect').click(function(){
+        let status=$(this).prop('checked')
+        $('.goodsInput').prop('checked',status)
+        sumFn()
+    })
+
+    //反选
+    $('#fanselect').click(function(){
+        $('.goodsInput').each((i,item)=>{
+            let status=$(item).prop('checked')
+            $(item).prop('checked',!status)
+        })
+        if($('.goodsInput:checked').length === $('.goodsInput').length){
+            $('#allselect').prop('checked', !status)
+        }else{
+            $('#allselect').prop('checked', status)
+        }
+
+        sumFn()
+    })
+    
+    //添加商品
+    $('#addGoods').click(function(){
+        $('table:eq(1) tbody').append(`
+        <tr>
+                <td class="tb2_td1">
+                    <input class="goodsInput" type="checkbox" value="1" name="newslist" id="newslist-1" />
+                </td>
+                <td class="tb2_td2"><a href="#"><img src="images/img1.jpg"/></a></td>
+                <td class="tb2_td3"><a href="#">产品标题</a></td>
+                <td class="tb1_td4">一件</td>
+                <td class="tb1_td5">
+                    <input class="delBtn" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
+                    <input class="num" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
+                    <input class="addBtn" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
+                </td>
+                <td class="tb1_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;">1</label></td>
+                <td class="tb1_td7"><a href="javascript:void(0);"  class="del">删除</a></td>
+            </tr>
+        `)
+        sumFn()
+        let status = $('.goodsInput:checked').length === $('.goodsInput').length
+        $('#allselect').prop('checked', status)
+    })
+    
+    //删除商品
+    $('table:eq(1) tbody').on('click','.del',function(){
+        $(this).parents('tr').remove()
+        sumFn()
+    })
+    
+    //商品+1
+    $('table:eq(1) tbody').on('click','.addBtn',function(){
+        let num=$(this).prev().val()
+        num++
+        $(this).prev().val(num)
+        sumFn()
+    })
+    
+    //商品-1
+    $('table:eq(1) tbody').on('click','.delBtn',function(){
+        let num=$(this).next().val()
+        num--
+        if(num<1) num=1
+        $(this).next().val(num)
+        sumFn()
+    })
+    
+    // 商品数量框
+    // $('table:eq(1) tbody').on('input','.num',function(){
+    //     let num=$(this).val()
+    //     num=String(num).replace(/\D/g,'')
+    //     if(Number(num)<1) num=1
+    //     $(this).val(num)
+    // })
+    //京东
+    $('table:eq(1) tbody').on('blur','.num',function(){
+        let num=parseInt($(this).val())
+        if(isNaN(num)||num<1) num=1
+        $(this).val(num)
+    })
+    // //统计商品数
+    // function sumFn(){
+    //     let sumPrice=0
+    //     let sumNumber=0
+    //     $('.goodsInput').each((i,item) => {
+    //         let num=$(item).parent('tr').find('.num').val()
+    //         let price=$(item).parents('tr').find('tb1_tb6 label').text()
+    //         sumNumber+=parseInt(num)
+    //         sumPrice+=parseInt(num)*parseFloat(price)
+    //     })
+    //     $('#shuliang').text(sumNumber)
+    //     $('#zong1').text(sumPrice)
+    // }
+</script>
+</body>

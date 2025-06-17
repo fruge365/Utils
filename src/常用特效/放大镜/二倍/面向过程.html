@@ -1,0 +1,75 @@
+<meta charset="utf-8">
+<style>
+    .img {
+        width: 400px;
+        height: 400px;
+        /* background-image: url(./imgs/电脑1.jpg); */
+        background-image: url(./imgs/1.jpg);
+    
+        position: relative;
+    }
+    /* 遮罩框 */
+    .img .mask {
+        position: absolute;
+        left:0;
+        top: 0;
+    
+        width: 50px;
+        height: 50px;
+        background-color: #225eea;
+        opacity: .3;
+        display: none;
+    }
+    .enlarge {
+        /*
+        width: 800px;
+        height: 800px;
+        */
+        width: 100px;
+        height: 100px;
+        /* background-image: url(./imgs/电脑2.avif); */
+        background-image: url(./imgs/1.big.jpg);
+        background-repeat: no-repeat;
+        background-position: 0 0 ;
+        display: none;
+    }
+    </style>
+<h1>面向过程</h1>
+<hr>
+<div class="box">
+    <!-- 图片 -->
+    <div class="img">
+        <div class="mask"></div>
+    </div>
+    <!-- 放大镜 -->
+    <div class="enlarge"></div>
+</div>
+<script>
+    /**
+     * 面向过程，实现放大镜效果
+    */
+    document.querySelector('.box .img').onmouseover= function(evt){
+        //获取img图片，给图片绑定鼠标引动时间
+        let e = evt || window.event    
+        //获取事件对象
+        let boxObj = document.querySelector('.box')
+        let maskObj= document.querySelector('.mask')
+        maskObj.style.display = 'block'
+        let left = e.pageX - boxObj.offsetLeft - maskObj.offsetWidth/2
+        //鼠标X位置 = 鼠标在页面中的位置-盒子距离父元素左面的距离-遮罩框自身宽度一半
+        let top = e.pageY - boxObj.offsetTop - maskObj.offsetHeight/2
+        //鼠标Y位置 = 鼠标在页面中的位置-盒子距离父元素上面的距离-遮罩框自身高度一半
+        maskObj.style.left = left + 'px'
+        maskObj.style.top = top + 'px'
+        let enlarge = document.querySelector('.enlarge')
+        enlarge.style.display = 'block'
+        enlarge.style.backgroundPosition = `-${left*2}px -${top*2}px`
+        
+    }
+    document.querySelector('.box .img').onmouseout = function(){
+        let maskObj= document.querySelector('.mask')
+        maskObj.style.display = 'none'
+        let enlarge = document.querySelector('.enlarge')
+        enlarge.style.display = 'none'
+    }
+</script>

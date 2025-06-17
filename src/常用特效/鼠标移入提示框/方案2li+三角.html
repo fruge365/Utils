@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方案2li+三角</title>
+    <style>
+        ul{
+            background-color: red;
+        }
+        ul li{
+            background-color: pink;
+            margin: 10px 0; 
+        }
+        div{
+            visibility: hidden;
+            /* visibility: visible; */
+            /* display: none; */
+            width: 100px;
+            height: 30px;
+            background-color: #555;
+            text-align: center;
+            border-radius: 5px;
+            line-height: 30px;
+            position: absolute;
+            pointer-events: none;
+            /* point-events:两个属性，auto——效果和没有定义pointer-events属性相同，鼠标不会穿透当前层，
+            none——元素永远不会成为鼠标事件的target（目标）。 */
+        }
+        div::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>0001</li>
+        <li>0002</li>
+        <li>0003</li>
+        <li>0004</li>
+        <li>0005</li>
+    </ul>
+    <div>提示框</div>
+</body>
+</html>
+<script>
+    var liObjs = document.querySelectorAll('li')
+    liObjs.forEach(function(item){
+        item.onmousemove = function(evt){
+            var e = evt || window.event
+            var divObj = document.querySelector('div')
+            divObj.innerText = item.innerText
+            divObj.style.visibility = 'visible'
+            // divObj.style.display = 'block'
+            var w = divObj.clientWidth
+            var h = divObj.clientHeight
+            divObj.style.left = e.clientX-w/2+'px'
+            divObj.style.top = e.clientY-h-5+'px'
+            
+        }
+        item.onmouseout = function(){
+            var divObj = document.querySelector('div')
+            divObj.style.visibility = 'hidden'
+            // divObj.style.display = 'none'
+        }
+    })
+</script>

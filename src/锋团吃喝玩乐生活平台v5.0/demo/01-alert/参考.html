@@ -1,0 +1,23 @@
+<meta charset="UTF-8" />
+<script src="../../assets/js/_jquery.js"></script>
+
+<h1>方法1</h1>
+<script src="./common-alert.js"></script>
+<button>测试</button>
+<script>
+  $("button:eq(0)").click(function () {
+    cocoMessage.error("修改失败！", 3000);
+    cocoMessage.info("请先登录！", 3000);
+    cocoMessage.success("修改成功！", 3000);
+    cocoMessage.warning("需要手动关闭", 0);
+
+    // loading
+    // const closeMsg = cocoMessage.loading(true);
+    // setTimeout(function () {
+    //   closeMsg();
+    // }, 4000);
+  });
+</script>
+
+<h2>方法2</h2>
+百度jq 提示框插件
